@@ -39,23 +39,42 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                  <?php
+
+                                      if ($employees->num_rows() >0) {
+
+                                        foreach ($employees->result() as $row) {  ?>
                                     <tr class="gradeX">
                                         <td>
                                           <label class="label_check" for="checkbox-01">
                                               <input name="sample-checkbox-01" id="checkbox-01" value="1" type="checkbox" checked />
                                           </label>
                                         </td>
-                                        <td>Internet Explorer 4.0</td>
-                                        <td>Win 95+</td>
-                                        <td class="center hidden-phone">4</td>
-                                        <td class="center hidden-phone">X</td>
-                                        <td class="center hidden-phone">X</td>   
+                                        <td><?php echo $row->LastName; ?></td>
+                                        <td><?php echo $row->FirstName; ?></td>
+                                        <td><?php echo $row->PositionId; ?></td>
+                                        <td><?php echo $row->DepartmentId; ?></td>
+                                        <td><?php echo $row->Leader1; ?></td>   
+
                                         <td>
                                               <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
                                               <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
                                               <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
                                         </td>                                       
                                     </tr>
+
+                                  <?php 
+
+                                        }
+                                        
+                                      }
+
+
+
+                                    ?>
+
+
+                                    
                                 </tbody>
                                 <tfoot>
                                     <tr>

@@ -20,6 +20,8 @@ class RanksController extends pierre_Controller {
 	 */
 	public function Masterlist()
 	{
+		$this->load->model('hr/RanksModel','rankmod');
+		$data['ranks'] = $this->rankmod->LoadRankList();
 		$layout = array('datatable' => TRUE, 'hr_emp_list' => 'active', 'service'=>'HRService');
 		$this->load->view('layout/meta');
 		$this->load->view('layout/css');
@@ -27,7 +29,7 @@ class RanksController extends pierre_Controller {
 		$this->load->view('layout/sectionstart');
 		$this->load->view('layout/header');
 		$this->load->view('layout/sidebar');
-		$this->load->view('hr/hr_ranks');
+		$this->load->view('hr/hr_ranks',$data);
 		$this->load->view('layout/rightsidebar');	
 		$this->load->view('layout/footer');	
 		$this->load->view('layout/js',$layout);	

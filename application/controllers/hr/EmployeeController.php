@@ -20,14 +20,17 @@ class EmployeeController extends pierre_Controller {
 	 */
 	public function Masterlist()
 	{
+		$this->load->model('hr/EmployeeModel','empmod');
+		$data['employees'] = $this->empmod->LoadEmployeeMasterlist();
 		$layout = array('datatable' => TRUE, 'hr_emp_list' => 'active', 'service'=>'HRService');
+		// print_r($data);
 		$this->load->view('layout/meta');
 		$this->load->view('layout/css');
 		$this->load->view('layout/headend');
 		$this->load->view('layout/sectionstart');
 		$this->load->view('layout/header');
 		$this->load->view('layout/sidebar');
-		$this->load->view('hr/hr_masterlist');
+		$this->load->view('hr/hr_masterlist',$data);
 		$this->load->view('layout/rightsidebar');	
 		$this->load->view('layout/footer');	
 		$this->load->view('layout/js',$layout);	
