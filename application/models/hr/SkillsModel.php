@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class PositionsModel extends CI_Model { 
+class SkillsModel extends CI_Model { 
 
-	public function LoadPositionsList(){
+	public function LoadSkillsList(){
 
 		$this->db->select('*');
-		$this->db->from('hr_general_positions');
+		$this->db->from('hr_general_skills');
 		$this->db->where('Active','1');
 		return $this->db->get();
 
@@ -19,4 +19,5 @@ class PositionsModel extends CI_Model {
 
 
 }
+
 

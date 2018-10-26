@@ -2,10 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class CostModel extends CI_Model { 
-
- 
-
-
 	public function LoadCostList(){
 
 		$this->db->select('*');

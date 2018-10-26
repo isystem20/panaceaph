@@ -3,9 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class TypesModel extends CI_Model { 
 
- 
-
-
 	public function LoadTypesList(){
 
 		$this->db->select('*');

@@ -68,8 +68,8 @@
                                     </tr>
                                       <?php 
                                         }
-                                      }
-                                    ?>
+                                        }
+                                      ?>
                                 </tbody>
                                 <tfoot>
                                     <tr>
