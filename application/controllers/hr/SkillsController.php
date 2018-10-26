@@ -20,6 +20,8 @@ class SkillsController extends pierre_Controller {
 	 */
 	public function Masterlist()
 	{
+		$this->load->model('hr/SkillsModel','skillsmod');
+		$data['skills'] = $this->skillsmod->LoadSkillsList();
 		$layout = array('datatable' => TRUE, 'hr_others' => 'active', 'service'=>'HRService');
 		$this->load->view('layout/meta');
 		$this->load->view('layout/css');
@@ -27,7 +29,7 @@ class SkillsController extends pierre_Controller {
 		$this->load->view('layout/sectionstart');
 		$this->load->view('layout/header');
 		$this->load->view('layout/sidebar',$layout);
-		$this->load->view('hr/hr_skills');
+		$this->load->view('hr/hr_skills',$data);
 		$this->load->view('layout/rightsidebar');	
 		$this->load->view('layout/footer');	
 		$this->load->view('layout/js',$layout);	

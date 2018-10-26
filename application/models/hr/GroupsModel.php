@@ -3,9 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class GroupsModel extends CI_Model { 
 
- 
-
-
 	public function LoadGroupslist(){
 
 		$this->db->select('*');

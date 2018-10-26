@@ -3,9 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SitesModel extends CI_Model { 
 
- 
-
-
 	public function LoadSitesList(){
 
 		$this->db->select('*');

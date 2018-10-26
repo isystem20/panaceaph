@@ -20,6 +20,8 @@ class CertificatesController extends pierre_Controller {
 	 */
 	public function Masterlist()
 	{
+		$this->load->model('hr/CertificatesModel','certmod');
+		$data['certificates'] = $this->certmod->LoadCertificatesList();
 		$layout = array('datatable' => TRUE, 'hr_others' => 'active', 'service'=>'HRService');
 		$this->load->view('layout/meta');
 		$this->load->view('layout/css');
@@ -27,7 +29,7 @@ class CertificatesController extends pierre_Controller {
 		$this->load->view('layout/sectionstart');
 		$this->load->view('layout/header');
 		$this->load->view('layout/sidebar',$layout);
-		$this->load->view('hr/hr_certificates');
+		$this->load->view('hr/hr_certificates',$data);
 		$this->load->view('layout/rightsidebar');	
 		$this->load->view('layout/footer');	
 		$this->load->view('layout/js',$layout);	

@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class TypesModel extends CI_Model { 
-
-	public function LoadTypesList(){
+class CertificatesModel extends CI_Model { 
+	
+	public function LoadCertificatesList(){
 
 		$this->db->select('*');
-		$this->db->from('hr_general_emptypes');
+		$this->db->from('hr_general_certificates');
 		$this->db->where('Active','1');
 		return $this->db->get();
 
@@ -19,4 +19,6 @@ class TypesModel extends CI_Model {
 
 
 }
+
+
 
