@@ -127,15 +127,7 @@
                                           <div class="col-lg-9">
                                               <select class="form-control" required name="natureofbusiness">
                                                   <option value="">Select Industry</option>                                                
-                                                  <?php
-                                                  if ($industries->num_rows() > 0) {
-                                                      foreach($industries->result() as $row) {
-                                                      ?>
-                                                  <option value="<?php echo $row->Id; ?>"><?php echo $row->Name; ?></option>
-                                                    <?php 
-                                                        }
-                                                      }
-                                                    ?>
+
                                               </select>
                                           </div>
                                       </div>
@@ -144,15 +136,6 @@
                                           <div class="col-lg-9">
                                               <select class="form-control" name="contract">
                                                   <option value="">Select Contract</option>
-                                                  <?php
-                                                  if ($contracts->num_rows() > 0) {
-                                                      foreach($contracts->result() as $row) {
-                                                      ?>
-                                                  <option value="<?php echo $row->Id; ?>"><?php echo $row->Name; ?></option>
-                                                    <?php 
-                                                        }
-                                                      }
-                                                    ?>
                                               </select>
                                           </div>
                                       </div>
