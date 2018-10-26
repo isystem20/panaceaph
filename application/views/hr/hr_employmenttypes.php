@@ -29,13 +29,12 @@
                             <table class="display table table-bordered table-striped" id="dynamic-table">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Code</th>
-                                        <th>Item Name</th>
-                                        <th>Description</th>
-                                        <th>Last Modified</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
+                                        <th class="code-header">Code</th>
+                                        <th class="name-header">Item Name</th>
+                                        <th class="desc-header">Description</th>
+                                        <th class="modat-header">Last Modified</th>
+                                        <th class="status-header">Status</th>
+                                        <th class="action-header">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -46,17 +45,21 @@
 
                                         foreach ($emptypes->result() as $row) {  ?>
                                     <tr class="gradeX">
-                                        <td>
-                                          <label class="label_check" for="checkbox-01">
-                                              <input name="sample-checkbox-01" id="checkbox-01" value="1" type="checkbox" checked />
-                                          </label>
-                                        </td>
+
                                         <td><?php echo $row->Code; ?></td>
                                         <td><?php echo $row->Name; ?></td>
-                                        <td><?php echo $row->Description; ?></td>
-                                         <td><?php echo $row->ModifiedById; ?></td>
-                                        <td><?php echo $row->Active; ?></td>
-
+                                        <td><?php echo character_limiter($row->Description, 50); ?></td>
+                                        <td><?php echo date('Y-m-d',strtotime($row->ModifiedAt)); ?></td> 
+                                        <td>
+                                          <?php 
+                                          if ($row->Active == '1') {
+                                            echo '<span class="label label-success">Active</span>';
+                                          }else {
+                                            echo '<span class="label label-default">Inactive</span>';
+                                          }
+                                          ?>
+                                            
+                                        </td>
                                         <td>
                                               <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
                                               <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
@@ -77,13 +80,12 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Code</th>
-                                        <th>Item Name</th>
-                                        <th>Description</th>
-                                        <th>Last Modified</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
+                                        <th class="code-header">Code</th>
+                                        <th class="name-header">Item Name</th>
+                                        <th class="desc-header">Description</th>
+                                        <th class="modat-header">Last Modified</th>
+                                        <th class="status-header">Status</th>
+                                        <th class="action-header">Actions</th>
                                     </tr>
                                 </tfoot>
                             </table>

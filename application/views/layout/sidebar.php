@@ -16,18 +16,18 @@
                   <!--HR Information -->
                   <div id="HRService" class="system-services">
                     <li>
-                        <a class="" href="index-2.html">
+                        <a  class="<?php if(!empty($hr_dashboard)) {echo 'active';} ?>" href="index-2.html">
                             <i class="fa fa-dashboard"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>                    
                     <li class="sub-menu">
-                        <a class="<?php if(!empty($hr_emp_list)) {echo $hr_emp_list;} ?>" href="javascript:;" >
+                        <a class="<?php if(!empty($hr_emp_list)) {echo 'active';} ?>" href="javascript:;" >
                             <i class="fa fa-book"></i>
                             <span>Employee</span>
                         </a>
                         <ul class="sub">
-                          <li><a class="<?php if(!empty($hr_emp_list)) {echo $hr_emp_list;} ?>" href="<?php echo base_url(); ?>hr/employees">Masterlist</a></li>
+                          <li><a href="<?php echo base_url(); ?>hr/employees">Masterlist</a></li>
                           <li><a href="<?php echo base_url(); ?>hr/positions">Positions</a></li>
                           <li><a href="<?php echo base_url(); ?>hr/employment-types">Types</a></li>
                           <li><a href="<?php echo base_url(); ?>hr/ranks">Ranks</a></li>
@@ -35,25 +35,25 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>hr/sites">
+                        <a class="<?php if(!empty($hr_sites)) {echo 'active';} ?>" href="<?php echo base_url(); ?>hr/sites">
                             <i class="fa fa-dashboard"></i>
                             <span>Sites / Branches</span>
                         </a>
                     </li>                  
                     <li>
-                        <a href="<?php echo base_url(); ?>hr/departments">
+                        <a class="<?php if(!empty($hr_depts)) {echo 'active';} ?>" href="<?php echo base_url(); ?>hr/departments">
                             <i class="fa fa-dashboard"></i>
                             <span>Departments</span>
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>hr/cost-centers">
+                        <a class="<?php if(!empty($hr_costcenters)) {echo 'active';} ?>" href="<?php echo base_url(); ?>hr/cost-centers">
                             <i class="fa fa-dashboard"></i>
                             <span>Cost Centers</span>
                         </a>
                     </li>
                     <li class="sub-menu">
-                        <a href="javascript:;" >
+                        <a class="<?php if(!empty($hr_others)) {echo 'active';} ?>" href="javascript:;" >
                             <i class="fa fa-book"></i>
                             <span>Other Records</span>
                         </a>
@@ -63,7 +63,7 @@
                         </ul>
                     </li>
                     <li class="sub-menu">
-                        <a href="javascript:;" >
+                        <a class="<?php if(!empty($hr_leaves)) {echo 'active';} ?>" href="javascript:;" >
                             <i class="fa fa-book"></i>
                             <span>Manage Leave</span>
                         </a>
@@ -77,13 +77,13 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>hr/settings">
+                        <a class="<?php if(!empty($hr_settings)) {echo 'active';} ?>" href="<?php echo base_url(); ?>hr/settings">
                             <i class="fa fa-dashboard"></i>
                             <span>Settings</span>
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url(); ?>hr/reports">
+                        <a class="<?php if(!empty($hr_reports)) {echo 'active';} ?>" href="<?php echo base_url(); ?>hr/reports">
                             <i class="fa fa-dashboard"></i>
                             <span>Reports</span>
                         </a>

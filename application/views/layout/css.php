@@ -33,6 +33,10 @@
     <!--  summernote -->
     <link href="<?php echo base_url(); ?>themes/assets/summernote/dist/summernote.css" rel="stylesheet">
     
+    <link href="<?php echo base_url(); ?>themes/assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet" />
+    <link href="<?php echo base_url(); ?>themes/assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet" />
+    <link rel="stylesheet" href="<?php echo base_url(); ?>themes/assets/data-tables/DT_bootstrap.css" />
+    
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url(); ?>themes/assets/toastr-master/toastr.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url(); ?>themes/css/style.css" rel="stylesheet">
@@ -40,6 +44,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>themes/assets/select2/css/select2.min.css"/>
     <link href="<?php echo base_url(); ?>themes/packages/hr_custom.css" rel="stylesheet" />
     <link href="<?php echo base_url(); ?>themes/css/panacea.css" rel="stylesheet" />
+
 
 
     <script src="<?php echo base_url(); ?>themes/js/jquery.js"></script>

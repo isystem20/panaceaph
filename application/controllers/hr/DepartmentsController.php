@@ -20,13 +20,13 @@ class DepartmentsController extends pierre_Controller {
 	 */
 	public function Masterlist()
 	{
-		$layout = array('datatable' => TRUE, 'hr_emp_list' => 'active', 'service'=>'HRService');
+		$layout = array('datatable' => TRUE, 'hr_depts' => 'active', 'service'=>'HRService');
 		$this->load->view('layout/meta');
 		$this->load->view('layout/css');
 		$this->load->view('layout/headend');
 		$this->load->view('layout/sectionstart');
 		$this->load->view('layout/header');
-		$this->load->view('layout/sidebar');
+		$this->load->view('layout/sidebar',$layout);
 		$this->load->view('hr/hr_departments');
 		$this->load->view('layout/rightsidebar');	
 		$this->load->view('layout/footer');	

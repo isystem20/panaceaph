@@ -1,3 +1,22 @@
 .system-services {
 	display: none;
 }
+.code-header {
+	min-width:120px;
+}
+
+.name-header {
+	min-width:120px;
+}
+.desc-header {
+	min-width:120px;
+}
+.status-header {
+	min-width:50px;
+}
+.action-header {
+	min-width:120px;
+}
+.modat-header {
+	min-width: 130px;
+}

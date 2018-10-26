@@ -7,6 +7,7 @@
     <script src="<?php echo base_url(); ?>themes/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url(); ?>themes/js/jquery.scrollTo.min.js"></script>
     <script src="<?php echo base_url(); ?>themes/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="<?php echo base_url(); ?>themes/js/jquery-ui-1.9.2.custom.min.js"></script>
     <script class="include" type="text/javascript" src="<?php echo base_url(); ?>themes/js/jquery.dcjqaccordion.2.7.js"></script>    
     <?php 
     if (!empty($charts)) { ?>
@@ -47,6 +48,29 @@
     <?php
     }
     ?>
+
+    <?php 
+    if (!empty($form)) { ?>
+    <script src="<?php echo base_url(); ?>themes/js/bootstrap-switch.js"></script>
+    <!--custom tagsinput-->
+    <script src="<?php echo base_url(); ?>themes/js/jquery.tagsinput.js"></script>
+    <!--custom checkbox & radio-->
+    <script type="text/javascript" src="<?php echo base_url(); ?>themes/js/ga.js"></script>
+
+    <script type="text/javascript" src="<?php echo base_url(); ?>themes/assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>themes/assets/bootstrap-daterangepicker/date.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>themes/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>themes/assets/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>themes/assets/ckeditor/ckeditor.js"></script>
+
+    <script type="text/javascript" src="<?php echo base_url(); ?>themes/assets/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
+    <script src="<?php echo base_url(); ?>themes/js/respond.min.js" ></script>
+    <script src="<?php echo base_url(); ?>themes/js/form-component.js"></script>    
+    <?php
+    }
+    ?>
+
+
     <?php 
     if (!empty($datatable)) { ?>
     <script src="<?php echo base_url(); ?>themes/js/jquery-ui-1.9.2.custom.min.js"></script>
@@ -148,7 +172,7 @@
     <script src="<?php echo base_url(); ?>themes/assets/toastr-master/toastr.js"></script>
 
 
-    <script src="<?php echo base_url(); ?>themes/js/respond.min.js" ></script>
+
 
     <!--right slidebar-->
     <script src="<?php echo base_url(); ?>themes/js/slidebars.min.js"></script>

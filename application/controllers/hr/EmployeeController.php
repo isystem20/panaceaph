@@ -29,7 +29,7 @@ class EmployeeController extends pierre_Controller {
 		$this->load->view('layout/headend');
 		$this->load->view('layout/sectionstart');
 		$this->load->view('layout/header');
-		$this->load->view('layout/sidebar');
+		$this->load->view('layout/sidebar',$layout);
 		$this->load->view('hr/hr_masterlist',$data);
 		$this->load->view('layout/rightsidebar');	
 		$this->load->view('layout/footer');	
