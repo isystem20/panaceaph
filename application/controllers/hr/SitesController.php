@@ -20,14 +20,25 @@ class SitesController extends pierre_Controller {
 	 */
 	public function Masterlist()
 	{
+<<<<<<< HEAD
 		$layout = array('datatable' => TRUE, 'hr_sites' => 'active', 'service'=>'HRService');
+=======
+		$this->load->model('hr/SitesModel','sitesmod');
+		$data['sites'] = $this->sitesmod->LoadSitesList();
+		$layout = array('datatable' => TRUE, 'hr_emp_list' => 'active', 'service'=>'HRService');
+>>>>>>> 2d7686da99ad0bce74201804a6054004afe13958
 		$this->load->view('layout/meta');
 		$this->load->view('layout/css');
 		$this->load->view('layout/headend');
 		$this->load->view('layout/sectionstart');
 		$this->load->view('layout/header');
+<<<<<<< HEAD
 		$this->load->view('layout/sidebar',$layout);
 		$this->load->view('hr/hr_sites');
+=======
+		$this->load->view('layout/sidebar');
+		$this->load->view('hr/hr_sites',$data);
+>>>>>>> 2d7686da99ad0bce74201804a6054004afe13958
 		$this->load->view('layout/rightsidebar');	
 		$this->load->view('layout/footer');	
 		$this->load->view('layout/js',$layout);	
