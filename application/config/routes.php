@@ -60,17 +60,61 @@ $route['clients/add'] = 'admin/ClientController/ClientCreate';
 
 
 
-$route['hr/employees'] = 'hr/EmployeeController/Masterlist';
-$route['hr/positions'] = 'hr/PositionsController/Masterlist';
-$route['hr/employment-types'] = 'hr/EmploymentTypesController/Masterlist';
-$route['hr/ranks'] = 'hr/RanksController/Masterlist';
-$route['hr/groups'] = 'hr/GroupsController/Masterlist';
-$route['hr/sites'] = 'hr/SitesController/Masterlist';
+/* Load Employee Masterlist */ 	$route['hr/employees'] = 'hr/EmployeeController/Masterlist';
+/* Post to create */ 			$route['hr/employees/add'] = 'hr/EmployeeController/Create';
+/* Post to edit */ 				$route['hr/employees/edit'] = 'hr/EmployeeController/Update';
+/* Post to delete */ 			$route['hr/employees/delete'] = 'hr/EmployeeController/Delete';
 
-$route['hr/departments'] = 'hr/DepartmentsController/Masterlist';
-$route['hr/cost-centers'] = 'hr/CostCentersController/Masterlist';
-$route['hr/skills'] = 'hr/SkillsController/Masterlist';
+/* Load Positions Masterlist */ $route['hr/positions'] = 'hr/PositionsController/Masterlist';
+/* Post to create */ 			$route['hr/positions/add'] = 'hr/PositionsController/Create';
+/* Post to edit */ 				$route['hr/positions/edit'] = 'hr/PositionsController/Update';
+/* Post to delete */ 			$route['hr/positions/delete'] = 'hr/PositionsController/Delete';
 
-$route['hr/certificates'] = 'hr/CertificatesController/Masterlist';
+/* Load Employment Types */ 	$route['hr/employment-types'] = 'hr/EmploymentTypesController/Masterlist';
+/* Post to create */ 			$route['hr/employment-types/add'] = 'hr/EmploymentTypesController/Create';
+/* Post to edit */ 				$route['hr/employment-types/edit'] = 'hr/EmploymentTypesController/Update';
+/* Post to delete */ 			$route['hr/employment-types/delete'] = 'hr/EmploymentTypesController/Delete';
+
+/* Load Ranks */ 				$route['hr/ranks'] = 'hr/RanksController/Masterlist';
+/* Post to create */ 			$route['hr/ranks/add'] = 'hr/RanksController/Create';
+/* Post to edit */ 				$route['hr/ranks/edit'] = 'hr/RanksController/Update';
+/* Post to delete */ 			$route['hr/ranks/delete'] = 'hr/RanksController/Delete';
+
+/* Load Groups */ 				$route['hr/groups'] = 'hr/GroupsController/Masterlist';
+/* Post to create */ 			$route['hr/groups/add'] = 'hr/GroupsController/Create';
+/* Post to edit */ 				$route['hr/groups/edit'] = 'hr/GroupsController/Update';
+/* Post to delete */ 			$route['hr/groups/delete'] = 'hr/GroupsController/Delete';
+
+/* Load Sites */ 				$route['hr/sites'] = 'hr/SitesController/Masterlist';
+/* Post to create */ 			$route['hr/sites/add'] = 'hr/SitesController/Create';
+/* Post to edit */ 				$route['hr/sites/edit'] = 'hr/SitesController/Update';
+/* Post to delete */ 			$route['hr/sites/delete'] = 'hr/SitesController/Delete';
+
+/* Load Departments */ 			$route['hr/departments'] = 'hr/DepartmentsController/Masterlist';
+/* Post to create */ 			$route['hr/departments/add'] = 'hr/DepartmentsController/Create';
+/* Post to edit */ 				$route['hr/departments/edit'] = 'hr/DepartmentsController/Update';
+/* Post to delete */ 			$route['hr/departments/delete'] = 'hr/DepartmentsController/Delete';
+
+
+/* Load Departments */ 			$route['hr/cost-centers'] = 'hr/CostCentersController/Masterlist';
+/* Post to create */ 			$route['hr/cost-centers/add'] = 'hr/CostCentersController/Create';
+/* Post to edit */ 				$route['hr/cost-centers/edit'] = 'hr/CostCentersController/Update';
+/* Post to delete */ 			$route['hr/cost-centers/delete'] = 'hr/CostCentersController/Delete';
+
+/* Load Skills */ 				$route['hr/skills'] = 'hr/SkillsController/Masterlist';
+/* Post to create */ 			$route['hr/skills/add'] = 'hr/SkillsController/Create';
+/* Post to edit */ 				$route['hr/skills/edit'] = 'hr/SkillsController/Update';
+/* Post to delete */ 			$route['hr/skills/delete'] = 'hr/SkillsController/Delete';
+
+/* Load Certificates */ 		$route['hr/certificates'] = 'hr/CertificatesController/Masterlist';
+/* Post to create */ 			$route['hr/certificates/add'] = 'hr/CertificatesController/Create';
+/* Post to edit */ 				$route['hr/certificates/edit'] = 'hr/CertificatesController/Update';
+/* Post to delete */ 			$route['hr/certificates/delete'] = 'hr/CertificatesController/Delete';
+
+
 $route['hr/settings'] = 'hr/SettingsController/Masterlist';
 $route['hr/reports'] = 'hr/ReportsController/Masterlist';
+
+
+
+

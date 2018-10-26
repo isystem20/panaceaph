@@ -75,4 +75,45 @@ $(document).ready(function() {
     });
 
 
+
+
+    $('#position-add-form').submit(function(e) {
+        e.preventDefault();
+
+        $("#submit-btn").prop("disabled", true);
+
+        var newURL = $('#position-add-form').attr('action');
+        var newData  = {
+                'CompanyId' : $('input[name=company]').val(),
+                'Code' : $('input[name=code]').val(),
+                'Name' : $('input[name=name]').val(),
+                'Description' : $('textarea[name=desc]').val(),
+                'Active' : $('select[name=status]').val(),                
+            }
+          $.ajax({
+              url: newURL,
+              type:'POST',
+              dataType: "json",
+              data: newData,
+              success: function(data) {
+                console.log(data);
+                if($.isEmptyObject(data.error)){
+                      toastr.success("Record Updated", "Successful");
+                        window.setTimeout(function(){
+                          location.reload(); 
+                        }, 1000);
+                  }
+                  else{
+                      toastr.error(data.error, "Error");
+                  }
+                $('input[name=code]').val('');
+                $('input[name=name]').val('');
+                $('input[name=desc]').val('');
+                $("#submit-btn").prop("disabled", false);                   
+
+              }
+              
+          });        
+    });
+
 });

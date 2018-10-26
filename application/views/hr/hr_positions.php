@@ -13,7 +13,7 @@
                     </header>
                     <div class="panel-body">
                           <div class="clearfix">
-                              <button id="add-new-position-btn" type="button" class="btn btn-primary">Add <i class="fa fa-plus"></i></button>
+                              <button id="add-new-position-btn" type="button" class="btn btn-primary" data-toggle="modal" href="#add-modal">Add <i class="fa fa-plus"></i></button>
                               <button type="button" class="btn btn-primary">Upload Bulk <i class="fa fa-cloud-upload"></i></button>
                               <div class="btn-group pull-right">
                                   <button class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Tools <i class="fa fa-angle-down"></i>
@@ -91,13 +91,13 @@
 </section>
 
 
-<div class="modal fade " id="add-new-position" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade " id="add-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog ">
       <div class="modal-content-wrap">
           <div class="modal-content">
               <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h4 class="modal-title">Add New Client</h4>
+                  <h4 class="modal-title">Add Position Type</h4>
               </div>
               <div class="modal-body">
 
@@ -105,55 +105,41 @@
                   <div class="col-lg-12">
                       <section class="panel">
                           <header class="panel-heading">
-                            Please input client basic information.
+                            Please input new position details
                           </header>
                           <div class="panel-body">
                               <div class="form">
-                                <?php echo form_open('clients/add','class="cmxform form-horizontal tasi-form"'); ?>
+                                <?php
+                                $hidden = array('company' => $this->session->userdata('companyid'), );
+                                ?>
+                                <?php echo form_open('hr/positions/add','class="cmxform form-horizontal tasi-form" id="position-add-form"',$hidden); ?>
                                       <div class="form-group ">
-                                          <label for="firstname" class="control-label col-lg-3">Client Name</label>
+                                          <label for="firstname" class="control-label col-lg-3">Code</label>
                                           <div class="col-lg-9">
-                                            <?php echo form_input(['name'=>'clientname', 'type'=>'text','class'=>'form-control', 'placeholder'=>'Input Client Complete Business Name','required'=>'']); ?>
+                                            <?php echo form_input(['name'=>'code', 'type'=>'text','class'=>'form-control', 'placeholder'=>'Unique Code of this item','required'=>'']); ?>
                                           </div>
                                       </div>
                                       <div class="form-group ">
-                                          <label for="lastname" class="control-label col-lg-3">Client Address</label>
+                                          <label for="lastname" class="control-label col-lg-3">Name</label>
                                           <div class="col-lg-9">
-                                            <?php echo form_input(['name'=>'clientaddress', 'type'=>'text','class'=>'form-control', 'placeholder'=>'Input Client Complete Address', 'required'=>'']); ?>
+                                            <?php echo form_input(['name'=>'name', 'type'=>'text','class'=>'form-control', 'placeholder'=>'Input the Position Name', 'required'=>'']); ?>
                                           </div>
                                       </div>
                                       <div class="form-group ">
-                                          <label for="username" class="control-label col-lg-3">Industry Type</label>
+                                          <label for="username" class="control-label col-lg-3">Description</label>
                                           <div class="col-lg-9">
-                                              <select class="form-control" required name="natureofbusiness">
-                                                  <option value="">Select Industry</option>                                                
-
+                                            <textarea class="form-control" name="desc" placeholder="Short Description of this record."></textarea>
+                                          </div>
+                                      </div>
+                                      <div class="form-group ">
+                                          <label for="username" class="control-label col-lg-3">Current Status</label>
+                                          <div class="col-lg-9">
+                                              <select class="form-control" name="status">
+                                                  <option selected value="1">Active</option>
+                                                  <option value="0">Inactive</option>
                                               </select>
                                           </div>
                                       </div>
-                                      <div class="form-group ">
-                                          <label for="username" class="control-label col-lg-3">Contract Type</label>
-                                          <div class="col-lg-9">
-                                              <select class="form-control" name="contract">
-                                                  <option value="">Select Contract</option>
-                                              </select>
-                                          </div>
-                                      </div>
-                                      <div class="form-group ">
-                                          <label for="firstname" class="control-label col-lg-3">Contact Person</label>
-                                          <div class="col-lg-9">
-                                            <?php echo form_input(['name'=>'contactperson', 'type'=>'text','class'=>'form-control', 'placeholder'=>'Who should we reach out to?','required'=>'']); ?>
-                                          </div>
-                                      </div>
-                                      <div class="form-group ">
-                                          <label for="lastname" class="control-label col-lg-3">Designation</label>
-                                          <div class="col-lg-9">
-                                            <?php echo form_input(['name'=>'designation', 'type'=>'text','class'=>'form-control', 'placeholder'=>"Contact person's designation", 'required'=>'']); ?>
-                                          </div>
-                                      </div>
-
-
-
                               </div>
                           </div>
                       </section>
@@ -162,7 +148,7 @@
               </div>
               <div class="modal-footer">
                   <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
-                  <button class="btn btn-warning" type="submit"> Save</button>
+                  <button class="btn btn-warning" id="submit-btn" type="submit"> Submit</button>
               </div>
               <?php echo form_close(); ?>
           </div>
