@@ -44,9 +44,9 @@ class PositionsController extends pierre_Controller {
         else{
         	$result = $this->posmod->Create($postdata);
         	if ($result != FALSE) {
-	        	$json = json_encode($postdata);
-	        	$this->logger->log('Add','Successful Adding Position',$json);        	
-	          	echo $json;
+	        	$json = json_encode($result);
+	        	$this->logger->log('Add','Successful Adding Position',$json);          		
+        		echo $json;
         	}
         	else {
         		echo json_encode(['error'=>'Update Unsuccessful.']);

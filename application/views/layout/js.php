@@ -75,7 +75,10 @@
     if (!empty($datatable)) { ?>
     <script src="<?php echo base_url(); ?>themes/js/jquery-ui-1.9.2.custom.min.js"></script>
     <script src="<?php echo base_url(); ?>themes/js/jquery-migrate-1.2.1.min.js"></script>
+    <!-- <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>       -->
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>    
     <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>themes/assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
+    
     <script type="text/javascript" src="<?php echo base_url(); ?>themes/assets/data-tables/DT_bootstrap.js"></script>
     <script src="<?php echo base_url(); ?>themes/js/dynamic_table_init.js"></script>
     <?php
