@@ -31,8 +31,8 @@ class PositionsController extends pierre_Controller {
 
 	public function Create() {
 
-        $this->form_validation->set_rules('Code', 'Sorting', 'required|is_unique[hr_general_positions.Code]');
-        $this->form_validation->set_rules('Name', 'Group by', 'required');
+        $this->form_validation->set_rules('Code', 'Item Cide', 'required|is_unique[hr_general_positions.Code]');
+        $this->form_validation->set_rules('Name', 'Item Name', 'required');
         $postdata = $this->input->post();
         if ($this->form_validation->run() == FALSE){
             $errors = validation_errors();
@@ -54,8 +54,68 @@ class PositionsController extends pierre_Controller {
 
         }
 
+	}
+
+
+	public function Delete() {
+
+        $this->form_validation->set_rules('Id', 'Item Record', 'required');
+
+        $postdata = $this->input->post();
+        if ($this->form_validation->run() == FALSE){
+            $errors = validation_errors();
+            echo json_encode(['error'=>$errors]);
+        }
+        elseif (empty($postdata['CompanyId'])) {
+        	echo json_encode(['error'=>'Subscription Cannot be validated.']);
+        }
+        else{
+        	$result = $this->posmod->Delete($postdata);
+        	if ($result != FALSE) {
+	        	$json = json_encode($result);
+	        	$this->logger->log('Del','Successful Deleting Position',$json);          		
+        		echo $json;
+        	}
+        	else {
+        		echo json_encode(['error'=>'Update Unsuccessful.']);
+        	}
+
+        }
 
 	}
+
+
+
+	public function Update() {
+
+        $this->form_validation->set_rules('Id', 'Item Record', 'required');
+
+        $postdata = $this->input->post();
+        if ($this->form_validation->run() == FALSE){
+            $errors = validation_errors();
+            echo json_encode(['error'=>$errors]);
+        }
+        elseif (empty($postdata['CompanyId'])) {
+        	echo json_encode(['error'=>'Subscription Cannot be validated.']);
+        }
+        else{
+        	$result = $this->posmod->Delete($postdata);
+        	if ($result != FALSE) {
+	        	$json = json_encode($result);
+	        	$this->logger->log('Del','Successful Deleting Position',$json);          		
+        		echo $json;
+        	}
+        	else {
+        		echo json_encode(['error'=>'Update Unsuccessful.']);
+        	}
+
+        }
+
+	}
+
+
+
+
 
 
 }

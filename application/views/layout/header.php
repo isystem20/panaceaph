@@ -5,7 +5,7 @@
                   <i class="fa fa-bars"></i>
               </div>
             <!--logo start-->
-            <a href="index-2.html" class="logo">Panacea</a>
+            <a id="site_url" href="<?php echo base_url(); ?>" class="logo">Panacea</a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->

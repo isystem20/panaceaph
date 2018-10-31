@@ -19,22 +19,24 @@
           <div class="modal-content">
               <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h4 class="modal-title">Add New Item</h4>
+                  <h4 class="modal-title" id="add-edit-form-title">Add New Item</h4>
               </div>
               <div class="modal-body">
 
               <div class="row">
                   <div class="col-lg-12">
                       <section class="panel">
-                          <header class="panel-heading">
+                          <header id="add-edit-form-header" class="panel-heading">
                             Please input new item details
                           </header>
                           <div class="panel-body">
                               <div class="form">
                                 <?php
-                                $hidden = array('company' => $this->session->userdata('companyid'), );
+                                $hidden = array(
+                                  'company' => $this->session->userdata('companyid'),
+                                  'id' => '', );
                                 ?>
-                                <?php echo form_open('hr/positions/add','class="cmxform form-horizontal tasi-form" id="generic-add-form"',$hidden); ?>
+                                <?php echo form_open('','class="cmxform form-horizontal tasi-form" id="generic-add-form"',$hidden); ?>
                                       <div class="form-group ">
                                           <label for="firstname" class="control-label col-lg-3">Code</label>
                                           <div class="col-lg-9">
@@ -84,7 +86,10 @@
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <?php
-            $hidden = array('company' => $this->session->userdata('companyid'), );
+            $hidden = array(
+              'company' => $this->session->userdata('companyid'), 
+              'id' => '',
+            );
             ?>
             <?php echo form_open('hr/positions/add','class="cmxform form-horizontal tasi-form" id="generic-del-form"',$hidden); ?>
             <div class="modal-header" style="background-color: #ff6c60;">
@@ -98,7 +103,7 @@
             </div>
             <div class="modal-footer">
                   <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
-                  <button class="btn btn-danger" id="submit-btn" type="submit"> Confirm</button>
+                  <button class="btn btn-danger" id="del-submit-btn" type="submit"> Confirm</button>
             </div>
             <?php echo form_close(); ?>
         </div>

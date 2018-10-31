@@ -1,38 +1,36 @@
+
 $(document).ready(function() {
 
+//NOTIFICATIONS
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "progressBar": true,
+  "positionClass": "toast-top-right",
+  // "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
 
-	toastr.options = {
-	  "closeButton": true,
-	  "debug": false,
-	  "progressBar": true,
-	  "positionClass": "toast-top-right",
-	  // "onclick": null,
-	  "showDuration": "300",
-	  "hideDuration": "1000",
-	  "timeOut": "5000",
-	  "extendedTimeOut": "1000",
-	  "showEasing": "swing",
-	  "hideEasing": "linear",
-	  "showMethod": "fadeIn",
-	  "hideMethod": "fadeOut"
-	}
+//SELECT SERVICES
+if ($("#package_select").length) {
 
+    $('.system-services').hide();
+    var elem = $("#package_select").val();
+    $('#'+elem).show();  
 
-
-	if ($("#package_select").length) {
-	    // $("#package_select")[0].selectedIndex = 0;
-
-	    $('.system-services').hide();
-	    var elem = $("#package_select").val();
-	    $('#'+elem).show();  
-
-	    $('#package_select').on("change", function() {
-	        $('.system-services').hide();
-	        var elem = $(this).val();
-	        $('#'+elem).show();  
-	    });
-	}
-
+    $('#package_select').on("change", function() {
+        $('.system-services').hide();
+        var elem = $(this).val();
+        $('#'+elem).show();  
+    });
+}
 
 $('#loginform').submit(function(e) {
         e.preventDefault();
@@ -73,18 +71,27 @@ $('#loginform').submit(function(e) {
           });        
 });
 
+
+//SHOW GENERIC FORM/MODAL TO ADD ITEM
 $('.add-new-generic-btn').click(function() {
-    $('#add-generic-item-modal').modal();
+  var action = $('#site_url').attr('href') + $(this).data('action');
+  $('#add-edit-form-title').text('Add New Item');
+  $('#add-edit-form-header').text('Please input new item details');  
+  $('#generic-add-form').attr('action',action)
+  $('#add-generic-item-modal').modal();
 });
 
+//SUBMIT GENERIC FORM TO ADD ITEM
 $('#generic-add-form').submit(function(e) {
     e.preventDefault();
 
     $("#submit-btn").prop("disabled", true);
-
+    var site = $('#site_url').attr('href');
+    var controller = $('.masterlist').data('type');
     var newURL = $('#generic-add-form').attr('action');
     var newData  = {
             'CompanyId' : $('input[name=company]').val(),
+            'Id' : $('input[name=id]').val(),   
             'Code' : $('input[name=code]').val(),
             'Name' : $('input[name=name]').val(),
             'Description' : $('textarea[name=desc]').val(),
@@ -110,19 +117,20 @@ $('#generic-add-form').submit(function(e) {
                     var status = '<span class="label label-default">Inactive</span>';
                   }
                   var btns = '<button class="btn btn-success btn-xs "><i class="fa fa-check"></i></button>'+
-                  '           <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>'+
-                  '           <button class="btn btn-danger btn-xs delete-generic-item-btn"><i class="fa fa-trash-o "></i></button>';                 
+                  '           <button data-id="'+data[0].Id+'" class="btn btn-primary btn-xs edit-generic-item-btn" data-action="'+controller+'/edit"><i class="fa fa-pencil"></i></button>'+
+                  '           <button data-id="'+data[0].Id+'" class="btn btn-danger btn-xs delete-generic-item-btn" data-action="'+controller+'/delete"><i class="fa fa-trash-o "></i></button>';                 
 
                   var t = $('#dynamic-table').DataTable();
-                  t.row.add( [
+                  var trDOM = t.row.add( [
                     code,
                     name,
                     desc,
                     modifieddate,
                     status,
                     btns,
-                  ] ).draw( false );
-
+                  ] ).draw().node();
+                  $( trDOM ).attr('id','row'+data[0].Id);
+                  $( trDOM ).find("td").eq(3).attr('data-active',data[0].Active);
                   $('#add-generic-item-modal').modal('hide');
               }
               else{
@@ -138,23 +146,25 @@ $('#generic-add-form').submit(function(e) {
       });        
 });
 
-$('.delete-generic-item-btn').click(function(e) {
-    $('#del-generic-item-modal').modal();
+
+//SHOW GENERIC FORM/MODAL TO DELETE ITEM
+$('.delete-generic-item-btn').click(function() {
+  var action = $('#site_url').attr('href') + $(this).data('action');
+  $('#generic-del-form').attr('action',action);
+  $('input[name=id]').val($(this).data('id'));
+  $('#del-generic-item-modal').modal();
 });
 
-
+//SUBMIT GENERIC FORM TO DELETE ITEM
 $('#generic-del-form').submit(function(e) {
     e.preventDefault();
 
-    $("#submit-btn").prop("disabled", true);
+    $("#del-submit-btn").prop("disabled", true);
 
-    var newURL = $('#generic-add-form').attr('action');
+    var newURL = $('#generic-del-form').attr('action');
     var newData  = {
             'CompanyId' : $('input[name=company]').val(),
-            'Code' : $('input[name=code]').val(),
-            'Name' : $('input[name=name]').val(),
-            'Description' : $('textarea[name=desc]').val(),
-            'Active' : $('select[name=status]').val(),                
+            'Id' : $('input[name=id]').val(),            
         }
       $.ajax({
           url: newURL,
@@ -165,44 +175,45 @@ $('#generic-del-form').submit(function(e) {
             console.log(data);
             if($.isEmptyObject(data.error)){
                 toastr.success("Record Updated", "Successful");                      
-                  var code = data[0].Code;
-                  var name = data[0].Name;
-                  var desc = data[0].Description.substr(0, 50);
-                  var modifieddate = $.datepicker.formatDate('yy-dd-M', new Date(data[0].ModifiedAt));  
-                  if (data[0].Active == '1') {
-                    var status = '<span class="label label-success">Active</span>';
-                  }
-                  else {
-                    var status = '<span class="label label-default">Inactive</span>';
-                  }
-                  var btns = '<button class="btn btn-success btn-xs "><i class="fa fa-check"></i></button>'+
-                  '           <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>'+
-                  '           <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>';                 
-
+                  var Id = data.Id;
+                  $('#del-generic-item-modal').modal('hide');
                   var t = $('#dynamic-table').DataTable();
-                  t.row.add( [
-                    code,
-                    name,
-                    desc,
-                    modifieddate,
-                    status,
-                    btns,
-                  ] ).draw( false );
-
-                  $('#add-modal').modal('hide');
+                  t
+                  .row($('#row'+data.Id))
+                  .remove()
+                  .draw();
               }
               else{
                   toastr.error(data.error, "Error");
               }
-            $('input[name=code]').val('');
-            $('input[name=name]').val('');
-            $('textarea[name=desc]').val('');
-            $("#submit-btn").prop("disabled", false);                   
+            $("#del-submit-btn").prop("disabled", false);                   
 
           }
           
       });        
 });
+
+//SHOW GENERIC FORM/MODAL TO EDIT ITEM
+$('.edit-generic-item-btn').click(function() {
+  var action = $('#site_url').attr('href') + $(this).data('action');
+  $('#add-edit-form-title').text('Edit Item');
+  $('#add-edit-form-header').text('Edit item details');  
+  $('#generic-add-form').attr('action',action);
+  $('input[name=id]').val($(this).data('id'));
+  $('#add-generic-item-modal').modal();
+  var tr = $('#row'+$(this).data('id'));
+  $('input[name=code]').val(tr.find("td").eq(0).text());
+  $('input[name=name]').val(tr.find("td").eq(1).text());
+  $('textarea[name=desc]').val(tr.find("td").eq(2).text());
+  $('select[name=status]').val(tr.find("td").eq(4).attr('data-active'));
+});
+
+
+
+
+
+
+
 
 
 
