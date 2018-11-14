@@ -7,7 +7,7 @@ class AuthModel extends CI_Model
 	
 
 	public function CheckLogin($username) {
-		$this->db->select('u.*, c.Id as companyId, c.Active as companyActive, c.CompanyName as companyName, i.id as industryId, "" as access');
+		$this->db->select('u.*, c.Id as companyId, c.Active as companyActive, c.CompanyName as companyName, c.Code as companycode, i.id as industryId, "" as access');
 		$this->db->from('system_users as u');
 		$this->db->join('system_companies as c','c.Id = u.CompanyId','left outer');
 		$this->db->join('system_industries as i','i.Id = c.IndustryType','left outer');

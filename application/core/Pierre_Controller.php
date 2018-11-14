@@ -15,9 +15,15 @@ class Pierre_Controller extends CI_Controller {
 
         // }
 
+
+
+        $this->load->model('SessionModel','sessionmod');
+
         $session_id = $this->session->userdata('userid');
         $password_temp = $this->session->userdata('temppass');
         $modadmin = $this->session->userdata('isadmin');
+        $companycode = $this->session->userdata('companycode');
+
 
         if(empty($session_id))
         {
@@ -26,6 +32,15 @@ class Pierre_Controller extends CI_Controller {
             }
             return redirect(base_url().'login');
         }
+        // else{
+        //     if (!empty(uri_string())) {
+        //         $arr = explode("/", uri_string(), 2);
+        //         if ($companycode != $arr[0]) {
+        //             http_response_code(404);
+        //             die('Page not found');
+        //         }
+        //     }
+        // }
 
     }
 

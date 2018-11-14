@@ -6,8 +6,16 @@
               <ul class="sidebar-menu" id="nav-accordion">
                   <div id="package_container">
                     <select id="package_select" class="form-control">
-                        <option value="AdminService">Administration</option>
-                        <option value="HRService">Human Resource</option>
+                      <?php
+                      // print_r($this->session->userdata());
+                      $services = $this->session->userdata('access');
+                      $uniques = [];
+                      foreach ($services as $row) {
+                        if(!in_array($row->ServiceId, $uniques)){
+                            $uniques[] = $row->ServiceId; ?>
+                            <option value="<?php echo $row->ServiceCode; ?>"><?php echo $row->ServiceName; ?></option>
+                      <?php } } ?>
+
                     </select>                     
                   </div>
                
@@ -16,7 +24,7 @@
                   <!--HR Information -->
                   <div id="HRService" class="system-services">
                     <li>
-                        <a  class="<?php if(!empty($hr_dashboard)) {echo 'active';} ?>" href="index-2.html">
+                        <a  class="<?php if(!empty($hr_dashboard)) {echo 'active';} ?>" href="<?php echo base_url('hr/dashboard/'); ?>">
                             <i class="fa fa-dashboard"></i>
                             <span>Dashboard</span>
                         </a>

@@ -32,6 +32,7 @@ class CertificatesController extends pierre_Controller {
 		$this->load->view('hr/hr_certificates',$data);
 		$this->load->view('layout/rightsidebar');	
 		$this->load->view('layout/footer');	
+		$this->load->view('layout/genericforms');			
 		$this->load->view('layout/js',$layout);	
 
 	}

@@ -1,34 +1,44 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class MainController extends pierre_Controller {
+class MainController extends Pierre_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
+	public function __construct() {
+		parent::__construct();
+	}
+
+
+
 	public function index()
 	{
-		$this->load->view('layout/meta');
-		$this->load->view('layout/css');
-		$this->load->view('layout/headend');
-		$this->load->view('layout/sectionstart');
-		$this->load->view('layout/header');
-		$this->load->view('layout/sidebar');
-		$this->load->view('generic/dashboard');
-		$this->load->view('layout/rightsidebar');	
-		$this->load->view('layout/footer');	
-		$this->load->view('layout/js');	
+		// $access = $this->session->userdata('access');
+  //       foreach ($access as $mod) {
+  //           $hiredate = $row->Date;
+  //       }
+		// print_r($this->session->userdata());
+		// $companycode = $this->session->userdata('companycode');
+
+		$services = $this->session->userdata('access');
+		if (!empty($services)) {
+			$uniques = [];
+			foreach ($services as $row) {
+				if ($row->isDefault == '1') {
+					if ($row->moduleURL != '') {
+						return redirect(base_url().$row->moduleURL);
+					}
+					else {
+						die('Default Page Not found.');
+					}
+				}
+			}
+		}
+		else {
+			die('Default Page Not Found.');
+		}
+	
 	}
+
+
+
+	
 }

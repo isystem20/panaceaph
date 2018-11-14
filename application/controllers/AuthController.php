@@ -11,6 +11,10 @@ class AuthController extends CI_Controller {
 
 	public function Login()
 	{
+
+		// $this->config->load('config');
+		// $this->config->set_item('base_url', 'http://panacea-ph.com/');
+
 		$ref = $this->input->get('ref', TRUE);
 		$data = array('ref'=>$ref);
 		$this->load->view('auth/login',$data);
@@ -43,23 +47,13 @@ class AuthController extends CI_Controller {
 		    $hashed_password = hash('sha512', $salt1 . $password . $salt2);
 			$data['Password'] = $hashed_password;
 			$result = $this->auth_mod->CheckLogin($username);
-			// print_r($user);
-			// echo $hashed_password;
-			// die();
-			// if (empty($this->session->userdata('login_attempts'))) {
-			// 	$attempts = array('login_attempts' => 0, );
-			// 	$this->session->set_userdata($attempts);
-			// }
-			// $n = $this->session->userdata('login_attempts');
-
-
-
-
 
 			if ($result !== FALSE) {
 
 				foreach ($result as $user)
 				{
+					$this->load->model('admin/ModuleAccessModel','moduleaccess');
+					$module_access = $this->moduleaccess->LoadUserModuleAccess($user->id,$user->CompanyId);
 					if ($user->Active == '0') {
 						$response = array('error'=>'Account disabled.');
 						// Start Log
@@ -91,10 +85,22 @@ class AuthController extends CI_Controller {
 				    	$json = json_encode($response);
 				      	echo $json;
 					}
+					elseif ($module_access == FALSE) {
+						$response = array('error'=>'You do not have permission to access this site.');
+						// Start Log
+						$actiondata = array_merge($response,$this->input->post());
+						$actiondata = json_encode($actiondata);
+						$this->logger->log('Failed Login','Authentication',$actiondata);
+						// End Log	
+				    	$json = json_encode($response);
+				      	echo $json;
+					}
 					else {
+						
 						$session_data = array(
 						'userid' => $user->id,
 						'companyid'=> $user->CompanyId,
+						'companycode'=> $user->companycode,
 						'code'=>$user->UserCode,
 						'firstname'=> $user->FirstName,
 						'lastname'=> $user->LastName,
@@ -108,7 +114,15 @@ class AuthController extends CI_Controller {
 						'email' =>$user->Email,
 						'photo'=>$user->UserPhoto,
 						'activecode'=>$user->ActivationCode,
+						'access'=>$module_access,
 						);
+
+
+						// print_r($session_data);
+						// die();
+						// $this->config->load('config');
+						// $this->config->set_item('base_url', base_url().$user->companycode);
+
 						$this->session->set_userdata($session_data);
 						$response = $session_data;
 						if ($ref == "") {

@@ -45,13 +45,11 @@
                                         foreach ($certificates->result() as $row) {  ?>
 
                                      <tr class="gradeX">
-                                        <td>
-                                          <?php echo $row->Code; ?>
-                                        </td>
+                                        <td><?php echo $row->Code; ?></td>
                                         <td><?php echo $row->Name; ?></td>
                                         <td><?php echo character_limiter($row->Description, 50); ?></td>
                                         <td><?php echo date('Y-m-d',strtotime($row->ModifiedAt)); ?></td> 
-                                        <td>
+                                        <td data-active="<?php echo $row->Active; ?>">
                                           <?php 
                                           if ($row->Active == '1') {
                                             echo '<span class="label label-success">Active</span>';

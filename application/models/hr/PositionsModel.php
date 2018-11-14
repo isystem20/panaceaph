@@ -10,16 +10,23 @@ class PositionsModel extends CI_Model {
 
 	public function LoadPositionsList($id = null){
 
-		$this->db->select('*');
-		$this->db->from('hr_general_positions');
+		$this->db->select('p.*, c.FirstName as cFirstName, c.LastName as cLastName, m.FirstName as mFirstName, m.LastName as mLastName');
+		$this->db->from('hr_general_positions as p');
+		$this->db->join('system_users as c','c.id = p.CreatedById','left outer');
+		$this->db->join('system_users as m','m.id = p.ModifiedById','left outer');
 
-		if (!empty($id)) {
-			$this->db->where('Id',$id);
-		}else {
-			$this->db->where('Active','1');		
-			$this->db->or_where('Active','0');			
+		if ($this->session->userdata('userlevel') < 90) {
+			$this->db->where('p.CompanyId',$this->session->userdata('company'));
 		}
-		return $this->db->get();
+		if (!empty($id)) {
+			$this->db->where('p.Id',$id);
+
+		}else {
+			$this->db->where('p.Active','1');		
+			$this->db->or_where('p.Active','0');			
+		}
+		$result = $this->db->get();
+		return $result;		
 
 	}
 
@@ -44,7 +51,7 @@ class PositionsModel extends CI_Model {
 	public function Delete($data) {
 		$this->db->set('Active',"'3'",FALSE); 
 		$this->db->set('ModifiedById',"'".$this->session->userdata('userid')."'",FALSE);
-		$this->db->set('ModifiedAt',"'".date('Y-m-d H:i:s')."'",FALSE);
+		$this->db->set('ModifiedAt','CURRENT_TIMESTAMP',FALSE);
 		$this->db->where('CompanyId',$data['CompanyId']);
 		$this->db->where('Id',$data['Id']);		
 		$this->db->update('hr_general_positions');
@@ -54,6 +61,27 @@ class PositionsModel extends CI_Model {
 			// if ($result->num_rows() > 0) {
 			// 	return $result->result();
 			// }
+			return $data;
+		}
+		else {
+			return FALSE;
+		}
+	}
+
+
+
+	public function Update($id, $data) {
+	    $this->db->set('ModifiedById',"'".$this->session->userdata('userid')."'",FALSE);
+	    $this->db->set('ModifiedAt','CURRENT_TIMESTAMP',FALSE);
+	    $this->db->set('VersionNo', 'VersionNo+1', FALSE);  
+	    $this->db->where('Id', $id);
+	    $query = $this->db->update('hr_general_positions', $data);
+		$update = $this->db->affected_rows();
+		if ($update > 0) {
+			$result = $this->LoadPositionsList($id);
+			if ($result->num_rows() > 0) {
+				return $result->result();
+			}
 			return $data;
 		}
 		else {

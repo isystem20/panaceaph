@@ -13,14 +13,18 @@ function fnFormatDetails2 ( oTable, nTr , par )
 $(document).ready(function() {
 
     $('#dynamic-table').dataTable( {
-        "aaSorting": [[ 4, "desc" ]]
+        "aaSorting": [[ 0, "asc" ]],
+        // dom: 'Bfrtip',
+        buttons: [
+                'copyHtml5', 'excel', 'pdf', 'csv'
+            ]
     } );
 
     /*
      * Insert a 'details' column to the table
      */
-    var nCloneTh = document.createElement( 'th' );
-    var nCloneTd = document.createElement( 'td' );
+    var nCloneTh = document.createElement('th');
+    var nCloneTd = document.createElement('td');
     nCloneTd.innerHTML = '<img src="../../themes/img/checkbox/radio-off.png">';
     nCloneTd.className = "center";
 

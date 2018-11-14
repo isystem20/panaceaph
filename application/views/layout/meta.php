@@ -10,4 +10,4 @@
     <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
     <link rel="shortcut icon" href="<?php echo base_url(); ?>themes/img/favicon.html">
 
-    <title>Panacea</title>
+    <title id="thispage" data-url="<?=base_url(); ?>">Panacea</title>

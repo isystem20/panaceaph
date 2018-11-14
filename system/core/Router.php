@@ -370,7 +370,18 @@ class CI_Router {
 	protected function _parse_routes()
 	{
 		// Turn the segment array into a URI string
+
+		//Original
 		$uri = implode('/', $this->uri->segments);
+		//End of Original Code
+
+		//Added PERRY
+		// $s = $this->uri->segments;		
+		// $client = array_values($s)[0];
+		// array_shift($s);
+		// $uri = implode('/', $s);
+
+		//End of Added
 
 		// Get HTTP verb
 		$http_verb = isset($_SERVER['REQUEST_METHOD']) ? strtolower($_SERVER['REQUEST_METHOD']) : 'cli';

@@ -81,6 +81,8 @@
                 <div id="footerPlaceholder"></div>
                 
                 <script src="<?php echo base_url(); ?>themes/js/jquery.js"></script>
+                <script src="<?php echo base_url(); ?>themes/js/jquery-ui-1.9.2.custom.min.js"></script>
+                <script src="<?php echo base_url(); ?>themes/js/jquery-migrate-1.2.1.min.js"></script>
                 <script src="<?php echo base_url(); ?>themes/assets/toastr-master/toastr.js"></script>
                 <script src="<?php echo base_url(); ?>themes/js/panacea.js"></script>                
             </div>

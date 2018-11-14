@@ -42,6 +42,15 @@
     <link href="<?php echo base_url(); ?>themes/css/style.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>themes/css/style-responsive.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>themes/assets/select2/css/select2.min.css"/>
+
+
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>themes/assets/bootstrap-datepicker/css/datepicker.css" />
+
+
+
+
+
+
     <link href="<?php echo base_url(); ?>themes/packages/hr_custom.css" rel="stylesheet" />
     <link href="<?php echo base_url(); ?>themes/css/panacea.css" rel="stylesheet" />
 

@@ -1,3 +1,3 @@
-  <body class="has-js">
+  <body class="">
   <section id="container">
       <!--header start-->
