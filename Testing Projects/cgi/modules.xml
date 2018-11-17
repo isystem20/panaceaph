@@ -1,0 +1,8 @@
+<modules id="HumanResource" caption="Human Resource" access_right="HumanResource" icon="info-circle">
+	<module id="Employees" caption="Employees" access_right="Employees" icon="info-circle">
+		<submodule id="MasterList" caption="Masterlist" icon="calendar" details="Show all the employee lists" access_right="MasterList" />
+		<submodule id="Positions" caption="Positions" icon="calendar" details="Show all positions" access_right="Positions" />
+	</module>
+</modules>
+
+
