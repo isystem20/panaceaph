@@ -55,5 +55,5 @@
     <link href="<?php echo base_url(); ?>themes/css/panacea.css" rel="stylesheet" />
 
 
-
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>themes/assets/fuelux/css/tree-style.css" />
     <script src="<?php echo base_url(); ?>themes/js/jquery.js"></script>

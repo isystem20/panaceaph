@@ -341,11 +341,11 @@ if ($('#addschool').length > 0) {
     }
     var str = '';
     str = str + '<tr>';
-    str = str + '  <td><input type="text" placeholder="This item will not be saved without this." class="form-control" name="school" value="'+ s.val() +'"></td>';
-    str = str + '  <td><input type="text" class="form-control" name="degree" value="'+ c.val() +'"></td>';
-    str = str + '  <td><input type="text" class="form-control" name="year" value="'+ g.val() +'"></td>';
-    str = str + '  <td><input type="text" class="form-control" name="award" value="'+ a.val() +'"></td>';
-    str = str + '  <td><button class="btn btn-danger btn-xs rm-educ"><i class="fa fa-trash-o "></i></button></td>';
+    str = str + '  <td><input type="text" placeholder="Can not be empty." class="form-control school" name="school" value="'+ s.val() +'"></td>';
+    str = str + '  <td><input type="text" class="form-control degree" name="degree" value="'+ c.val() +'"></td>';
+    str = str + '  <td><input type="text" class="form-control eyear" name="eyear" value="'+ g.val() +'"></td>';
+    str = str + '  <td><input type="text" class="form-control award" name="award" value="'+ a.val() +'"></td>';
+    str = str + '  <td class="actions"><button class="btn btn-danger btn-xs tr-remover"><i class="fa fa-trash-o "></i></button></td>';
     str = str + '</tr>';
     $('#education tbody').append(str);
     s.val('');
@@ -356,18 +356,47 @@ if ($('#addschool').length > 0) {
   });
 }
 
-
+//REMOVE EDUC/WORK/LICENSE ENTRY
+$('.table').delegate(".tr-remover", "click", function() {
+  var tr = $(this).closest('tr');
+  $(tr).remove();
+});
 
 
 //SUBMIT ADD EMPLOYEE
 $('#employeeform').submit(function(e) {
     e.preventDefault();
 
+    var school = new Array();
+    $("input[name=school]").each(function() {
+       school.push($(this).val());
+    });
+    var degree = new Array();
+    $("input[name=degree]").each(function() {
+       degree.push($(this).val());
+    });
+    var eyear = new Array();
+    $("input[name=eyear]").each(function() {
+       eyear.push($(this).val());
+    });
+    var award = new Array();
+    $("input[name=award]").each(function() {
+       award.push($(this).val());
+    });
+
+    // alert(educ_school);
+    // return false;
+
     $("#employeesubmit").prop("disabled", true);
     var newURL = $(this).attr('action');
     var newData  = {
+            'CompanyId' : $('input[name=companyid]').val(),
             'firstname' : $('input[name=firstname]').val(),
             'lastname' : $('input[name=lastname]').val(),
+            'education_school' : school,
+            'education_degree' : degree,
+            'education_year' : eyear,
+            'education_award' : award,
 
         }
       $.ajax({

@@ -226,14 +226,14 @@
                                 <div class="col-sm-4">
                                   <label class="col-sm-4 control-label">Duration</label>
                                   <div class="col-sm-8">
-                                    <input type="text" name="duration" class="form-control" placeholder="Current Status Duration">
+                                    <input type="number" name="duration" class="form-control" placeholder="Duration (Mo)">
                                   </div>
                                 </div>
 
                                 <div class="col-sm-4">
                                   <label class="col-sm-4 control-label">Shift</label>
                                   <div class="col-sm-8">
-                                    <input class="form-control form-control-inline input-medium default-date-picker" name="shift" size="16" type="text" value="">
+                                    <input disabled class="form-control form-control-inline input-medium default-date-picker" name="shift" size="16" type="text" value="">
                                   </div>
                                 </div>
                             </div>                            
@@ -294,11 +294,11 @@
                                           </tr>
                                           </thead>
                                           <tbody>
-                                            <td>QCPU</td>
+                                       <!--      <td>QCPU</td>
                                             <td>BSIT</td>
                                             <td>2009-2013</td>
                                             <td></td>
-                                            <td></td>                             
+                                            <td></td>    -->                          
                                           </tbody>
                                       </table>
                                   </div>  

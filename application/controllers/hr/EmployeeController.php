@@ -28,7 +28,7 @@ class EmployeeController extends pierre_Controller {
 		$this->load->view('layout/footer');	
 		$this->load->view('layout/js',$layout);	
 	}
-	public function RegisterPage() {
+	public function Information($id = null) {
 		$layout = array('hr_emp_list' => 'active', 'service'=>'HRService', 'advancedform' => TRUE,);
 		$data['labels'] = array('breadcrumb' => 'Register', 'header'=>'Add Employee');
 		$this->load->view('layout/meta');
@@ -52,29 +52,29 @@ class EmployeeController extends pierre_Controller {
 
         $this->form_validation->set_rules('firstname', 'first name', 'required');
         $this->form_validation->set_rules('lastname', 'last name', 'required');
-        $this->form_validation->set_rules('middlename', 'middle name', 'required');
-        $this->form_validation->set_rules('birthdate', 'birthdate', 'required');
-        $this->form_validation->set_rules('civilstatus', 'civil status', 'required');
-        $this->form_validation->set_rules('nationality', 'nationality', 'required');
-        $this->form_validation->set_rules('address', 'address', 'required');  
+        // $this->form_validation->set_rules('middlename', 'middle name', 'required');
+        // $this->form_validation->set_rules('birthdate', 'birthdate', 'required');
+        // $this->form_validation->set_rules('civilstatus', 'civil status', 'required');
+        // $this->form_validation->set_rules('nationality', 'nationality', 'required');
+        // $this->form_validation->set_rules('address', 'address', 'required');  
        
-        $this->form_validation->set_rules('city', 'birthdate', 'required');
-        $this->form_validation->set_rules('region', 'civil status', 'required');
-        $this->form_validation->set_rules('email', 'email', 'required|valid_email');
-        $this->form_validation->set_rules('employeenumber', 'employee number', 'required');
-        $this->form_validation->set_rules('companyemail', 'company email', 'required|valid_email');
-        $this->form_validation->set_rules('site', 'site', 'required');
-        $this->form_validation->set_rules('department', 'department', 'required');
-        $this->form_validation->set_rules('costcenter', 'costcenter', 'required');
+        // $this->form_validation->set_rules('city', 'birthdate', 'required');
+        // $this->form_validation->set_rules('region', 'civil status', 'required');
+        // $this->form_validation->set_rules('email', 'email', 'required|valid_email');
+        // $this->form_validation->set_rules('employeenumber', 'employee number', 'required');
+        // $this->form_validation->set_rules('companyemail', 'company email', 'required|valid_email');
+        // $this->form_validation->set_rules('site', 'site', 'required');
+        // $this->form_validation->set_rules('department', 'department', 'required');
+        // $this->form_validation->set_rules('costcenter', 'costcenter', 'required');
 
-        $this->form_validation->set_rules('superior', 'superior', 'required');
-        $this->form_validation->set_rules('position', 'position', 'required');
-        $this->form_validation->set_rules('rank', 'rank', 'required');
-        $this->form_validation->set_rules('type', 'type', 'required');
+        // $this->form_validation->set_rules('superior', 'superior', 'required');
+        // $this->form_validation->set_rules('position', 'position', 'required');
+        // $this->form_validation->set_rules('rank', 'rank', 'required');
+        // $this->form_validation->set_rules('type', 'type', 'required');
 
-        $this->form_validation->set_rules('hiredate', 'hire date', 'required');
-        $this->form_validation->set_rules('duration', 'duration', 'required');
-        $this->form_validation->set_rules('shift', 'shift', 'required');
+        // $this->form_validation->set_rules('hiredate', 'hire date', 'required');
+        // $this->form_validation->set_rules('duration', 'duration', 'required');
+        // $this->form_validation->set_rules('shift', 'shift', 'required');
 
         $this->form_validation->set_error_delimiters('<p class="help-block">','</p>');
         $postdata = $this->input->post();
@@ -93,6 +93,7 @@ class EmployeeController extends pierre_Controller {
         	echo json_encode(['error'=>'Subscription Cannot be validated.']);
         }
         else{
+        	echo json_encode($postdata);
         	// $result = $this->posmod->Create($postdata);
         	// if ($result != FALSE) {
 	        // 	$json = json_encode($result);

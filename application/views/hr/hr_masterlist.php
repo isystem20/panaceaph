@@ -115,7 +115,7 @@ $class = $extra['class'];
 
                                         <td>
                                               <button data-id="<?php echo $row->Id; ?>" class="btn btn-success btn-xs open-generic-item-btn"data-action="hr/<?php echo $class; ?>/read"><i class="fa fa-info-circle"></i></button>
-                                              <button data-id="<?php echo $row->Id; ?>" class="btn btn-primary btn-xs edit-generic-item-btn" data-action="hr/<?php echo $class; ?>/edit"><i class="fa fa-pencil"></i></button>
+                                              <a href="<?=base_url('hr/employees/'.$row->Id); ?>" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                                               <button data-id="<?php echo $row->Id; ?>" class="btn btn-danger btn-xs delete-generic-item-btn" data-action="hr/<?php echo $class; ?>/delete"><i class="fa fa-trash-o "></i></button>
 
 
