@@ -12,7 +12,7 @@ class EmploymentTypesController extends pierre_Controller {
 
 	public function Masterlist()
 	{
-		$data['emptypes'] = $this->typesmod->LoadTypesList();
+		$data['emptypes'] = $this->typesmod->LoadList();
 		$data['extra'] = array('class'=>'employment-types');
 		$layout = array('datatable' => TRUE, 'hr_emp_list' => 'active', 'service'=>'HRService');
 		$this->load->view('layout/meta');
@@ -42,7 +42,7 @@ class EmploymentTypesController extends pierre_Controller {
         else{
         	$postdata = $this->input->post();
         	$id = $postdata['Id'];
-        	$data = $this->typesmod->LoadPositionsList($id);
+        	$data = $this->typesmod->LoadList($id);
 
         	if ($data->num_rows() > 0) {
         		$result = $data->result();        		
@@ -142,6 +142,23 @@ class EmploymentTypesController extends pierre_Controller {
         }
 	}
 
+
+    public function LoadList($param = null) {
+        $items = $this->typesmod->LoadList();
+        $lists = $items->result();
+
+        if ($param == 'options') {
+            $output = '<option value="">Select Employment Type</option>';
+            foreach ($lists as $row) {
+                $output .= '<option value="'.$row->Id.'">'.$row->Name.'</option>';
+            }
+            echo $output;
+        }
+        else {
+            echo 'Parameter not defined.';
+        }
+
+    }
 
 
 

@@ -18,7 +18,7 @@ class SitesController extends pierre_Controller {
 
 		$layout = array('datatable' => TRUE, 'hr_sites' => 'active', 'service'=>'HRService');
 		$data['extra'] = array('class'=>'sites');
-		$data['sites'] = $this->sitemod->LoadSitesList();
+		$data['sites'] = $this->sitemod->LoadList();
 		$this->load->view('layout/meta');
 		$this->load->view('layout/css');
 		$this->load->view('layout/headend');
@@ -45,7 +45,7 @@ class SitesController extends pierre_Controller {
         else{
         	$postdata = $this->input->post();
         	$id = $postdata['Id'];
-        	$data = $this->sitemod->LoadPositionsList($id);
+        	$data = $this->sitemod->LoadList($id);
 
         	if ($data->num_rows() > 0) {
         		$result = $data->result();        		
@@ -146,7 +146,22 @@ class SitesController extends pierre_Controller {
 	}
 
 
+    public function LoadList($param = null) {
+        $items = $this->sitemod->LoadList();
+        $lists = $items->result();
 
+        if ($param == 'options') {
+            $output = '<option value="">Select Branch</option>';
+            foreach ($lists as $row) {
+                $output .= '<option value="'.$row->Id.'">'.$row->Name.'</option>';
+            }
+            echo $output;
+        }
+        else {
+            echo 'Parameter not defined.';
+        }
+
+    }
 
 
 

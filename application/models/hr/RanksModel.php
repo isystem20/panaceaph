@@ -10,7 +10,7 @@ class RanksModel extends CI_Model {
 	}
 
 
-	public function LoadRankList($id = null){
+	public function LoadList($id = null){
 
 		$this->db->select('p.*, c.FirstName as cFirstName, c.LastName as cLastName, m.FirstName as mFirstName, m.LastName as mLastName');
 		$this->db->from('hr_general_ranks as p');
@@ -40,7 +40,7 @@ class RanksModel extends CI_Model {
 		$this->db->insert('hr_general_ranks',$data);
 		$inserted = $this->db->insert_id();
 		if ($inserted > 0) {
-			$result = $this->LoadRankList($inserted);
+			$result = $this->LoadList($inserted);
 			if ($result->num_rows() > 0) {
 				return $result->result();
 			}
@@ -77,7 +77,7 @@ class RanksModel extends CI_Model {
 	    $query = $this->db->update('hr_general_ranks', $data);
 		$update = $this->db->affected_rows();
 		if ($update > 0) {
-			$result = $this->LoadRankList($id);
+			$result = $this->LoadList($id);
 			if ($result->num_rows() > 0) {
 				return $result->result();
 			}

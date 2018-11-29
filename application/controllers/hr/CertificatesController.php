@@ -21,7 +21,7 @@ class CertificatesController extends pierre_Controller {
 	public function Masterlist()
 	{
 		$this->load->model('hr/CertificatesModel','certmod');
-		$data['certificates'] = $this->certmod->LoadCertificatesList();
+		$data['certificates'] = $this->certmod->LoadList();
 		$layout = array('datatable' => TRUE, 'hr_others' => 'active', 'service'=>'HRService');
 		$this->load->view('layout/meta');
 		$this->load->view('layout/css');

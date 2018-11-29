@@ -10,6 +10,13 @@
                   <li class="active"><?=$labels['breadcrumb']; ?></li>
                 </ul>
 
+                <?php $hidden = array(
+                  'companyid'=>$this->session->userdata('companyid'),
+                  'id' => '',
+                ); ?>
+                <?=form_open('hr/employees/add','id="employeeform" class="form-horizontal tasi-form" role="form"',$hidden);?>
+
+
                 <section class="panel">
                     <header class="panel-heading">
                         <?=$labels['header']; ?>
@@ -20,11 +27,7 @@
                     <div class="panel-body">
 
                       <div class="item-group">
-                          <?php $hidden = array(
-                            'companyid'=>$this->session->userdata('companyid'),
-                            'id' => '',
-                          ); ?>
-                          <?=form_open('hr/employees/add','id="employeeform" class="form-horizontal tasi-form" role="form"',$hidden);?>
+
 
                           <div id="basicinfo" class="mb-20">
                             <div style="margin-bottom: 20px;">
@@ -33,16 +36,18 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Full Name</label>
                                 <div class="col-sm-3">
-                                  <input type="text" class="form-control" name="firstname" placeholder="First Name">
+                                  <input type="text" class="form-control FirstName" name="firstname" placeholder="First Name">
+                                </div>
+
+
+                                <div class="col-sm-3">
+                                  <input type="text" class="form-control MiddleName" name="middlename" placeholder="Middle Name">
                                 </div>
 
                                 <div class="col-sm-3">
-                                  <input type="text" class="form-control" name="lastname" placeholder="Last Name">
+                                  <input type="text" class="form-control LastName" name="lastname" placeholder="Last Name">
                                 </div>
 
-                                <div class="col-sm-3">
-                                  <input type="text" class="form-control" name="middlename" placeholder="Middle Name">
-                                </div>
 
                                 <div class="col-sm-1">
                                   <input type="text" class="form-control" name="suffix" placeholder="Suffix">
@@ -51,61 +56,52 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Birth Date</label>
                                 <div class="col-sm-2">
-                                    <input class="form-control form-control-inline input-medium default-date-picker" name="birthdate" size="16" type="text" value="">
+                                    <input class="form-control form-control-inline input-medium default-date-picker Birthdate" name="birthdate" size="16" type="text" value="">
                                 </div>
 
                                 <label class="col-sm-2 control-label">Civil Status</label>
                                 <div class="col-sm-2">
-                                    <select class="form-control" name="civilstatus">
-                                        <option>Single</option>
-                                        <option>Married</option>
-                                        <option>Separated</option>
+                                    <select class="form-control CivilStatus" name="civilstatus">
+                                        <option value="Single">Single</option>
+                                        <option value="Married">Married</option>
+                                        <option value="Separated">Separated</option>
                                     </select>
                                 </div>
 
-                                <label class="col-sm-2 control-label">Nationality</label>
+                                <label class="col-sm-2 control-label NationalityId">Nationality</label>
                                 <div class="col-sm-2">
                                     <select class="js-example-basic-single" name="nationality" get="json/nationalities/options">
-                                        <option value="AL">Select City</option>
-                                        <option value="WY">Wyoming</option>
                                     </select>
                                 </div>                                  
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Address</label>
                                 <div class="col-sm-6">
-                                  <input type="text" name="address" class="form-control" placeholder="House No., Street, Subdivision">
+                                  <input type="text" name="address" class="form-control Address1" placeholder="House No., Street, Subdivision">
                                 </div>
                                 <div class="col-sm-2">
-                                    <select class="js-example-basic-single" name="city" get="json/cities/options">
-                                        <option value="AL">Select City</option>
-                                        <option value="WY">Wyoming</option>
+                                    <select class="js-example-basic-single CityId" name="city" get="json/cities/options">
                                     </select>
                                 </div>
                                 <div class="col-sm-2">
-                                    <select class="js-example-basic-single" name="region" get="json/regions/options">
-                                        <option value="AL">Select Region</option>
-                                        <option value="WY">Wyoming</option>
+                                    <select class="js-example-basic-single ProvinceId" name="region" get="json/regions/options">
                                     </select>
                                 </div>                                  
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Contact Details</label>
                                 <div class="col-sm-3">
-                                  <input type="text" name="email" class="form-control" placeholder="Email">
+                                  <input type="text" name="email" class="form-control PersonalEmail" placeholder="Email">
                                 </div>
 
                                 <div class="col-sm-3">
                                   <input type="text" name="mobile" class="form-control" placeholder="Mobile Number">
                                 </div>
 
-                                <div class="col-sm-3">
+                                <div class="col-sm-4">
                                   <input type="text" name="landline" class="form-control" placeholder="Landline">
                                 </div>
 
-                                <div class="col-sm-1">
-                                  <input type="text" name="local" class="form-control" placeholder="Local">
-                                </div>
                             </div>
                           </div>
 
@@ -118,7 +114,7 @@
                                 <div class="col-sm-4">
                                   <label class="col-sm-4 control-label">Number</label>
                                   <div class="col-sm-8">
-                                    <input type="text" name="employeenumber" class="form-control" placeholder="Employee Number">
+                                    <input type="text" name="employeenumber" class="form-control Code" placeholder="Employee Number">
                                   </div>
                                 </div>
 
@@ -126,7 +122,7 @@
                                 <div class="col-sm-4">
                                   <label class="col-sm-4 control-label">Email</label>
                                   <div class="col-sm-8">
-                                    <input type="text" name="companyemail" class="form-control" placeholder="Company Email">
+                                    <input type="text" name="companyemail" class="form-control CompanyEmail" placeholder="Company Email">
                                   </div>
                                 </div>
 
@@ -141,8 +137,7 @@
                                 <div class="col-sm-4">
                                   <label class="col-sm-4 control-label">Site/Branch</label>
                                   <div class="col-sm-8">
-                                    <select class="js-example-basic-single" name="site">
-                                        <option value="">Assigned Site/Branch</option>
+                                    <select class="js-example-basic-single SiteId" name="site" get="json/sites/options">
                                     </select>
                                   </div>
                                 </div>
@@ -151,8 +146,7 @@
                                 <div class="col-sm-4">
                                   <label class="col-sm-4 control-label">Department</label>
                                   <div class="col-sm-8">
-                                    <select class="js-example-basic-single" name="department">
-                                        <option value="">Assigned Department</option>
+                                    <select class="js-example-basic-single DepartmentId" name="department" get="json/departments/options">
                                     </select>
                                   </div>
                                 </div>
@@ -160,27 +154,24 @@
                                 <div class="col-sm-4">
                                   <label class="col-sm-4 control-label">CostCenter</label>
                                   <div class="col-sm-8">
-                                    <select class="js-example-basic-single" name="costcenter">
-                                        <option value="">Cost Center</option>
+                                    <select class="js-example-basic-single CostCenterId" name="costcenter" get="json/costcenters/options">
                                     </select>
                                   </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-sm-6">
+                                <div class="col-sm-4">
                                   <label class="col-sm-4 control-label">Group</label>
                                   <div class="col-sm-8">
-                                    <select class="js-example-basic-single" name="team">
-                                        <option value="">Assigned Group/Team</option>
+                                    <select class="js-example-basic-single" name="team" get="json/groups/options">
                                     </select>
                                   </div>
                                 </div>
                                 
-                                <div class="col-sm-6">
-                                  <label class="col-sm-4 control-label">Reporting To</label>
+                                <div class="col-sm-4">
+                                  <label class="col-sm-4 control-label">Superior</label>
                                   <div class="col-sm-8">
-                                    <select class="js-example-basic-single" name="superior">
-                                        <option value="">Inline Manager</option>
+                                    <select class="js-example-basic-single Leader1" name="superior" get="json/superior/options">
                                     </select>
                                   </div>
                                 </div>
@@ -189,8 +180,7 @@
                                 <div class="col-sm-4">
                                   <label class="col-sm-4 control-label">Designation</label>
                                   <div class="col-sm-8">
-                                    <select class="js-example-basic-single" name="position">
-                                        <option value="">Designation</option>
+                                    <select class="js-example-basic-single PositionId" name="position" get="json/positions/options">
                                     </select>
                                   </div>
                                 </div>
@@ -199,8 +189,7 @@
                                 <div class="col-sm-4">
                                   <label class="col-sm-4 control-label">Rank</label>
                                   <div class="col-sm-8">
-                                    <select class="js-example-basic-single" name="rank">
-                                        <option value="">Rank</option>
+                                    <select class="js-example-basic-single EmployeeRankId" name="rank" get="json/ranks/options">
                                     </select>
                                   </div>
                                 </div>
@@ -208,8 +197,7 @@
                                 <div class="col-sm-4">
                                   <label class="col-sm-4 control-label">Type</label>
                                   <div class="col-sm-8">
-                                    <select class="js-example-basic-single" name="type">
-                                        <option value="">Employment Type</option>
+                                    <select class="js-example-basic-single EmployeeTypeId" name="type" get="json/emptypes/options">
                                     </select>
                                   </div>
                                 </div>
@@ -218,7 +206,7 @@
                                 <div class="col-sm-4">
                                   <label class="col-sm-4 control-label">Date Hired</label>
                                   <div class="col-sm-8">
-                                    <input class="form-control form-control-inline input-medium default-date-picker" name="hiredate" size="16" type="text" value="">
+                                    <input class="form-control form-control-inline input-medium default-date-picker DateHired" name="hiredate" size="16" type="text" value="">
                                   </div>
                                 </div>
 
@@ -226,7 +214,7 @@
                                 <div class="col-sm-4">
                                   <label class="col-sm-4 control-label">Duration</label>
                                   <div class="col-sm-8">
-                                    <input type="number" name="duration" class="form-control" placeholder="Duration (Mo)">
+                                    <input type="number" name="duration" class="form-control Duration" placeholder="Duration (Mo)">
                                   </div>
                                 </div>
 
@@ -236,344 +224,217 @@
                                     <input disabled class="form-control form-control-inline input-medium default-date-picker" name="shift" size="16" type="text" value="">
                                   </div>
                                 </div>
-                            </div>                            
-                          </div>
-
-                          <div id="educationalbackground">
-                            <div class="mb-20 mt-40">
-                              <span class="label label-primary">EDUCATIONAL BACKGROUND</span> 
                             </div>  
-                              <div class="form-group">
+
+                            <div class="form-group">
+                                <div class="col-sm-3">
+                                  <label class="col-sm-4 control-label">SSS</label>
+                                  <div class="col-sm-8">
+                                    <input type="text" name="sss" class="form-control SSS" placeholder="Social Security System Id">
+                                  </div>
+                                </div>
+
+                                
+                                <div class="col-sm-3">
+                                  <label class="col-sm-4 control-label">TIN</label>
+                                  <div class="col-sm-8">
+                                    <input type="text" name="tin" class="form-control" placeholder="Tax Identity Number">
+                                  </div>
+                                </div>
 
                                 <div class="col-sm-3">
-                                  
-                                    <div class="form-group">
-                                      <label class="col-sm-3 control-label">School</label> 
-                                      <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="School Name" id="schoolname">
-                                      </div>
-                                    </div> 
+                                  <label class="col-sm-4 control-label">Philhealth</label>
+                                  <div class="col-sm-8">
+                                    <input type="text" name="philhealth" class="form-control" placeholder="Philhealth Id">
+                                  </div>
                                 </div>
+
                                 <div class="col-sm-3">
-                                    <div class="form-group">
-                                      <label class="col-sm-3 control-label">Degree</label> 
-                                      <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="Course/Degree" id="course">
-                                      </div>
-                                    </div>  
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="form-group">
-                                      <label class="col-sm-3 control-label">Year</label> 
-                                      <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="MM/YY-MM/YY" id="graduatedate">
-                                      </div>
-                                    </div>                                   
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="form-group">
-                                      <label class="col-sm-3 control-label">Award</label> 
-                                      <div class="col-sm-6">
-                                        <input type="text" class="form-control" placeholder="Awards" id="award">
-                                      </div>
-                                      <div class="col-sm-3">
-                                        <button type="button" class="btn btn-info btn-sm" id="addschool">Add</button>
-                                      </div>                                      
-                                    </div>                                   
-                                </div>                            
-                              <div class="form-group">
-                                  <div class="col-sm-12">
-                                      <table class="table table-hover" id="education">
-                                          <thead>
-                                          <tr>
-                                              <th>School Name</th>
-                                              <th>Degree</th>
-                                              <th>Date</th>
-                                              <th>Award</th>
-                                              <th>Action</th>
-                                          </tr>
-                                          </thead>
-                                          <tbody>
-                                       <!--      <td>QCPU</td>
-                                            <td>BSIT</td>
-                                            <td>2009-2013</td>
-                                            <td></td>
-                                            <td></td>    -->                          
-                                          </tbody>
-                                      </table>
-                                  </div>  
-                              </div>
-                            </div>                            
+                                  <label class="col-sm-4 control-label">PAG-IBIG</label>
+                                  <div class="col-sm-8">
+                                    <input type="text" name="hdmf" class="form-control" placeholder="PAG-IBIG Id">
+                                  </div>
+                                </div>                                
+                            </div>  
+
                           </div>
+                        </div>
 
-                          <div id="employmenthistory">
-                              <div class="mb-20 mt-40">
-                                <span class="label label-primary">EMPLOYMENT HISTORY</span> 
-                              </div>  
-                              <div class="form-group">
+                      </div>
 
-                                <div class="col-sm-3">
-                                  
-                                    <div class="form-group">
-                                      <label class="col-sm-3 control-label">Company</label> 
-                                      <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="Company Name">
-                                      </div>
-                                    </div> 
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="form-group">
-                                      <label class="col-sm-3 control-label">Position</label> 
-                                      <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="Designation">
-                                      </div>
-                                    </div>  
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="form-group">
-                                      <label class="col-sm-3 control-label">Year</label> 
-                                      <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="MM/YY-MM/YY">
-                                      </div>
-                                    </div>                                   
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="form-group">
-                                      <label class="col-sm-3 control-label">Contact</label> 
-                                      <div class="col-sm-6">
-                                        <input type="text" class="form-control" placeholder="Contact Num">
-                                      </div>
-                                      <div class="col-sm-3">
-                                        <button type="button" class="btn btn-info btn-sm">Add</button>
-                                      </div>                                      
-                                    </div>                                   
-                                </div>                            
-                              </div> 
-                              <div class="form-group">
-                                  <div class="col-sm-12">
-                                      <table class="table table-hover" id="workhistory">
-                                          <thead>
-                                          <tr>
-                                              <th>#</th>
-                                              <th>School Name</th>
-                                              <th>Degree</th>
-                                              <th>Date</th>
-                                              <th>Action</th>
-                                          </tr>
-                                          </thead>
-                                          <tbody>
-                                          <tr>
-                                              <td>Quezon City</td>
-                                              <td>Mark</td>
-                                              <td>Otto</td>
-                                              <td>@mdo</td>
-                                              <td>
-                                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                              </td>
-                                          </tr>
+                </section>
 
-                                          </tbody>
-                                      </table>
-                                  </div>  
+
+
+                <section class="panel">
+                        <div class="panel-body">
+
+                          <div>
+                             <header class="panel-heading tab-bg-dark-navy-blue ">
+                                  <ul class="nav nav-tabs">
+                                      <li class="active">
+                                          <a data-toggle="tab" href="#educ">EDUCATION</a>
+                                      </li>
+                                      <li class="">
+                                          <a data-toggle="tab" href="#work">WORK EXPERIENCES</a>
+                                      </li>
+                                      <li class="">
+                                          <a data-toggle="tab" href="#li">LICENSES</a>
+                                      </li>
+                                      <li class="">
+                                          <a data-toggle="tab" href="#tc">TRAININGS / CERTIFICATION</a>
+                                      </li>
+                                      <li class="">
+                                          <a data-toggle="tab" href="#dep">DEPENDENTS</a>
+                                      </li>
+
+                                  </ul>
+                              </header>
+                              <div class="panel-body">
+                                  <div class="tab-content">
+                                      <div id="educ" class="tab-pane active">
+                                          <div id="educationalbackground">
+                                            <div class="mb-20 mt-40">
+                                              <span class="label label-primary">EDUCATIONAL BACKGROUND</span>  <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#addeducationmodal"><i class="fa fa-plus "></i></button>
+                                            </div>  
+                                              <div class="form-group">
+                                                  <div class="col-sm-12">
+                                                      <table class="table table-hover" id="education">
+                                                          <thead>
+                                                          <tr>
+                                                              <th>School Name</th>
+                                                              <th>Degree</th>
+                                                              <th class="text-center">Inclusive Dates</th>
+                                                              <th>Award</th>
+                                                              <th>Action</th>
+                                                          </tr>
+                                                          </thead>
+                                                          <tbody>                         
+                                                          </tbody>
+                                                      </table>
+                                                  </div>  
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div id="work" class="tab-pane">
+                                          <div id="employmenthistory">
+                                              <div class="mb-20 mt-40">
+                                                <span class="label label-primary">EMPLOYMENT HISTORY</span> <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#addworkhistorymodal"><i class="fa fa-plus "></i></button>
+                                              </div>  
+                                              <div class="form-group">
+                                                  <div class="col-sm-12">
+                                                      <table class="table table-hover" id="workhistory">
+                                                          <thead>
+                                                          <tr>
+                                                              <th>Company Name</th>
+                                                              <th>Designation</th>
+                                                              <th>Date</th>
+                                                              <th>Contact</th>
+                                                              <th>Action</th>
+                                                          </tr>
+                                                          </thead>
+                                                          <tbody>
+                                                          </tbody>
+                                                      </table>
+                                                  </div>  
+                                              </div>                            
+                                          </div>
+                                      </div>
+                                      <div id="li" class="tab-pane">
+                                          <div id="licenses">
+                                            <div class="mb-20 mt-40">
+                                              <span class="label label-primary">LICENSES</span> <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#addlicensemodal"><i class="fa fa-plus "></i></button>
+                                            </div>  
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                    <table class="table table-hover" id="license">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>License Name</th>
+                                                            <th>Issuer</th>
+                                                            <th>Validity</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        </tbody>
+                                                    </table>
+                                                </div>  
+                                            </div>                            
+                                          </div>
+                                      </div>
+                                      <div id="tc" class="tab-pane">
+
+                                          <div id="trainingsandcerts">
+                                            <div class="mb-20 mt-40">
+                                              <span class="label label-primary">TRAININGS AND CERTIFICATES</span> <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#addtrainingmodal"><i class="fa fa-plus "></i></button>
+                                            </div>  
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                    <table class="table table-hover" id="training">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Training/Certificate</th>
+                                                            <th>Issuer</th>
+                                                            <th>Date</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        </tbody>
+                                                    </table>
+                                                </div>  
+                                            </div>                             
+                                          </div>
+
+                                      </div>
+                                      <div id="dep" class="tab-pane">
+
+                                          <div id="dependentstable">
+                                            <div class="mb-20 mt-40">
+                                              <span class="label label-primary">DEPENDENTS</span> <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#adddependentmodal"><i class="fa fa-plus "></i></button>
+                                            </div>  
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                    <table class="table table-hover" id="dependents">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Full Name</th>
+                                                            <th>Relation</th>
+                                                            <th>Birthdate</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        </tbody>
+                                                    </table>
+                                                </div>  
+                                            </div>                             
+                                          </div>
+
+                                      </div>
+
+                                  </div>
                               </div>                            
-                          </div>
-
-                          <div id="licenses">
-                            <div class="mb-20 mt-40">
-                              <span class="label label-primary">LICENSES</span> 
-                            </div>  
-                            <div class="form-group">
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                      <label class="col-sm-3 control-label">License</label> 
-                                      <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="License Name">
-                                      </div>
-                                    </div> 
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                      <label class="col-sm-3 control-label">Issued by</label> 
-                                      <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="Issuing Institution">
-                                      </div>
-                                    </div>  
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                      <label class="col-sm-3 control-label">Validity</label> 
-                                      <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="MM/YY-MM/YY">
-                                      </div>
-                                      <div class="col-sm-2">
-                                        <button type="button" class="btn btn-info btn-sm">Add</button>                                  
-                                      </div>                                       
-                                    </div>  
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <table class="table table-hover" id="license">
-                                        <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>School Name</th>
-                                            <th>Degree</th>
-                                            <th>Date</th>
-                                            <th>Action</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>Quezon City</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td>
-                                              <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                            </td>
-                                        </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>  
-                            </div>                            
-                          </div>
-
-                          <div id="trainingsandcerts">
-                            <div class="mb-20 mt-40">
-                              <span class="label label-primary">TRAININGS AND CERTIFICATES</span> 
-                            </div>  
-                            <div class="form-group">
-                              <div class="col-sm-4">
-                                  <div class="form-group">
-                                    <label class="col-sm-3 control-label">Name</label> 
-                                    <div class="col-sm-9">
-                                      <input type="text" class="form-control" placeholder="Training/Certificate">
-                                    </div>
-                                  </div> 
-                              </div>
-                              <div class="col-sm-4">
-                                  <div class="form-group">
-                                    <label class="col-sm-3 control-label">Issued by</label> 
-                                    <div class="col-sm-9">
-                                      <input type="text" class="form-control" placeholder="Issuing Institution">
-                                    </div>
-                                  </div>  
-                              </div>
-                              <div class="col-sm-4">
-                                  <div class="form-group">
-                                    <label class="col-sm-3 control-label">Date</label> 
-                                    <div class="col-sm-7">
-                                      <input type="text" class="form-control" placeholder="Validity/Training Duration">
-                                    </div>
-                                    <div class="col-sm-2">
-                                      <button type="button" class="btn btn-info btn-sm">Add</button>                                  
-                                    </div>                                       
-                                  </div>  
-                              </div>                          
-                            </div> 
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <table class="table table-hover" id="training">
-                                        <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>School Name</th>
-                                            <th>Degree</th>
-                                            <th>Date</th>
-                                            <th>Action</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>Quezon City</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td>
-                                              <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                            </td>
-                                        </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>  
-                            </div>                             
-                          </div>
-
-                          <div id="governmentalrecords">
-                            <div class="mb-20 mt-40">
-                            <span class="label label-primary">GOVERNMENTAL RECORDS</span> 
-                            </div>  
-                            <div class="form-group">
-                                <div class="col-sm-4">
-
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">SSS</label>
-                                        <div class="col-sm-9">
-                                          <input type="text" class="form-control" name="sss" placeholder="SSS Number">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">TIN</label>
-                                        <div class="col-sm-9">
-                                          <input type="text" class="form-control" name="tin" placeholder="Tax Identity Number">
-                                        </div>
-                                    </div>
-
-                                   <div class="form-group">
-                                        <label class="col-sm-3 control-label">Philhealth</label>
-                                        <div class="col-sm-9">
-                                          <input type="text" class="form-control" name="philhealth" placeholder="Philhealth Number">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">HDMF</label>
-                                        <div class="col-sm-9">
-                                          <input type="text" class="form-control" name="hdmf" placeholder="HDMF Number">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <span class="label label-default">DEPENDENTS</span> <button class="btn btn-primary btn-xs"><i class="fa fa-plus "></i></button>
-                                    <table class="table table-hover">
-                                        <thead>
-                                        <tr>
-                                            <th>Full Name</th>
-                                            <th>Relation</th>
-                                            <th>Birthdate</th>
-                                            <th>Action</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td>
-                                              <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                            </td>
-                                        </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>                              
                           </div>
                          
                             <div class=" add-task-row">
                                 <button class="btn btn-success btn-sm pull-right" type="submit" id="employeesubmit">Submit</button>
                             </div>
-                        </form>                        
+                      
                       </div>
+                </section>
+
+
+
+
 
 
 
                     </div>
-                </section>
+
+                </form>  
+
             </div>
         </div>
     </section>
@@ -604,3 +465,217 @@
   }
   
 </style>
+
+
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="addeducationmodal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title">Add Education</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="inputEmail1" class="col-sm-3 control-label">School Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="School Name" id="schoolname">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword1" class="col-sm-3 control-label">Degree</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="Course/Degree" id="course">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword1" class="col-sm-3 control-label">Inclusive Dates</label>
+                        <div class="col-sm-9">
+
+                            <div data-date-minviewmode="months" class="input-group input-large date dpMonths col-lg-12" data-date="13/07/2013" data-date-format="mm/dd/yyyy">
+                                <input type="text" class="form-control dpd1" id="edfrom">
+                                <span class="input-group-addon">To</span>
+                                <input type="text" class="form-control dpd2" id="edto">
+                            </div>
+                            <!-- <input type="text" class="form-control" placeholder="MM/YY-MM/YY" id="graduatedate"> -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword1" class="col-sm-3 control-label">Award</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="Awards" id="award">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <button type="button" class="btn btn-info btn-sm" id="addschool">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="addworkhistorymodal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title">Add Education</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="inputEmail1" class="col-lg-3 col-sm-3 control-label">Company</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" placeholder="Company Name" id="ehcompany">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword1" class="col-lg-3 col-sm-3 control-label">Position</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" placeholder="Designation" id="ehposition">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword1" class="col-lg-3 col-sm-3 control-label">Year</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" placeholder="MM/YY-MM/YY" id="ehyear">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword1" class="col-lg-3 col-sm-3 control-label">Contact</label>
+                        <div class="col-lg-9">
+                           <input type="text" class="form-control" placeholder="Contact Num" id="ehcontact">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <button type="button" class="btn btn-info btn-sm" id="addworkhistory">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="addlicensemodal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title">Add License</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="inputEmail1" class="col-lg-3 col-sm-3 control-label">Company</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" placeholder="License Name" id="license">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword1" class="col-lg-3 col-sm-3 control-label">Position</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" placeholder="Issuing Institution" id="liprovider">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword1" class="col-lg-3 col-sm-3 control-label">Year</label>
+                        <div class="col-lg-9">
+                             <input type="text" class="form-control" placeholder="MM/YY-MM/YY" id="livalidity">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                             <button type="button" class="btn btn-info btn-sm" id="addlicense">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="addtrainingmodal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title">Add Trainining/Certification</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="inputEmail1" class="col-lg-3 col-sm-3 control-label">Company</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" placeholder="Training/Certificate" id="training">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword1" class="col-lg-3 col-sm-3 control-label">Position</label>
+                        <div class="col-lg-9">
+                           <input type="text" class="form-control" placeholder="Issuing Institution" id="tcprovider">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword1" class="col-lg-3 col-sm-3 control-label">Year</label>
+                        <div class="col-lg-9">
+                             <input type="text" class="form-control" placeholder="Validity/Training Duration" id="tcdate">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                             <button type="button" class="btn btn-info btn-sm" id="addtraining">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="adddependentmodal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title">Add Dependent</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="inputEmail1" class="col-lg-3 col-sm-3 control-label">Full Name</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" placeholder="Dependent's Full Name" id="dependent">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword1" class="col-lg-3 col-sm-3 control-label">Relation</label>
+                        <div class="col-lg-9">
+                           <input type="text" class="form-control" placeholder="Relationship" id="relation">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword1" class="col-lg-3 col-sm-3 control-label">Birthdate</label>
+                        <div class="col-lg-9">
+                             <input type="text" class="form-control" placeholder="Birthdate" id="depbdate">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                             <button type="button" class="btn btn-info btn-sm" id="adddependent">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

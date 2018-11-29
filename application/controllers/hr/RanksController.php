@@ -13,7 +13,7 @@ class RanksController extends pierre_Controller {
 	public function Masterlist()
 	{
 
-		$data['ranks'] = $this->rankmod->LoadRankList();
+		$data['ranks'] = $this->rankmod->LoadList();
 		$data['extra'] = array('class'=>'ranks');
 		$layout = array('datatable' => TRUE, 'hr_emp_list' => 'active', 'service'=>'HRService');
 		$this->load->view('layout/meta');
@@ -42,7 +42,7 @@ class RanksController extends pierre_Controller {
         else{
         	$postdata = $this->input->post();
         	$id = $postdata['Id'];
-        	$data = $this->rankmod->LoadPositionsList($id);
+        	$data = $this->rankmod->LoadList($id);
 
         	if ($data->num_rows() > 0) {
         		$result = $data->result();        		
@@ -142,6 +142,23 @@ class RanksController extends pierre_Controller {
         }
 	}
 
+
+    public function LoadList($param = null) {
+        $items = $this->rankmod->LoadList();
+        $lists = $items->result();
+
+        if ($param == 'options') {
+            $output = '<option value="">Select Rank</option>';
+            foreach ($lists as $row) {
+                $output .= '<option value="'.$row->Id.'">'.$row->Name.'</option>';
+            }
+            echo $output;
+        }
+        else {
+            echo 'Parameter not defined.';
+        }
+
+    }
 
 
 

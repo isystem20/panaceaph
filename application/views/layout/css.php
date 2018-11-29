@@ -57,3 +57,19 @@
 
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>themes/assets/fuelux/css/tree-style.css" />
     <script src="<?php echo base_url(); ?>themes/js/jquery.js"></script>
+
+
+<!--     
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script>
+  var OneSignal = window.OneSignal || [];
+  OneSignal.push(function() {
+    OneSignal.init({
+      appId: "bc5eb251-cb49-42a6-b914-d2e4afe6a905",
+      autoRegister: false,
+      notifyButton: {
+        enable: true,
+      },
+    });
+  });
+</script> -->

@@ -151,6 +151,16 @@ $route['hr/reports'] = 'hr/ReportsController/Masterlist';
 $route['json/cities/(:any)'] = 'generic/ListController/LoadCityList/$1';
 $route['json/nationalities/(:any)'] = 'generic/ListController/LoadNationalityList/$1';
 $route['json/regions/(:any)'] = 'generic/ListController/LoadRegionList/$1';
+$route['json/sites/(:any)'] = 'hr/SitesController/LoadList/$1';
+$route['json/departments/(:any)'] = 'hr/DepartmentsController/LoadList/$1';
+$route['json/costcenters/(:any)'] = 'hr/CostCentersController/LoadList/$1';
+$route['json/groups/(:any)'] = 'hr/GroupsController/LoadList/$1';
+$route['json/superior/(:any)'] = 'hr/EmployeeController/LoadList/$1';
+$route['json/positions/(:any)'] = 'hr/PositionsController/LoadList/$1';
+$route['json/ranks/(:any)'] = 'hr/RanksController/LoadList/$1';
+$route['json/emptypes/(:any)'] = 'hr/EmploymentTypesController/LoadList/$1';
+
+
 
 
 // $route['catchall_controller'] = 'MainController/index'; 
