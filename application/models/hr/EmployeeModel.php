@@ -26,12 +26,32 @@ class EmployeeModel extends CI_Model {
 		$ed_s = $postdata['education_school'];
 		$ed_d = $postdata['education_degree'];
 		$ed_y = $postdata['education_year'];
-
+		$ed_a = $postdata['education_award'];
 
 
 
 		unset($postdata['DateHired']);
 		unset($postdata['Duration']);
+		unset($postdata['education_school']);
+		unset($postdata['education_degree']);
+		unset($postdata['education_year']);
+		unset($postdata['education_award']);
+        unset($postdata['work_company']);
+        unset($postdata['work_position']);
+       	unset($postdata['work_year']);
+        unset($postdata['work_contact']);
+        unset($postdata['license_name']);
+        unset($postdata['license_provider']);
+        unset($postdata['license_validity']);
+        unset($postdata['training_name']);
+        unset($postdata['training_provider']);
+        unset($postdata['training_date']);
+        unset($postdata['dependent_name']);
+        unset($postdata['dependent_relation']);
+        unset($postdata['dependent_bdate']);
+
+
+
 
 		$id = $this->uuid->v4();
 		$this->db->set('Id',"'".$id."'",FALSE); 
@@ -42,6 +62,7 @@ class EmployeeModel extends CI_Model {
 		if ($inserted > 0) {
 
 			//Insert Hiring details
+
 
 			
 

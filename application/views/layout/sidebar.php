@@ -120,7 +120,7 @@
                     </li>  
 
                     <li>
-                        <a class="<?php if(!empty($admin_services)) {echo $admin_services;} ?>" href="index-2.html">
+                        <a class="<?php if(!empty($admin_services)) {echo $admin_services;} ?>" href="<?php echo base_url(); ?>admin/services">
                             <i class="fa fa-dashboard"></i>
                             <span>Services</span>
                         </a>

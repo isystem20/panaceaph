@@ -492,7 +492,7 @@
                         <label for="inputPassword1" class="col-sm-3 control-label">Inclusive Dates</label>
                         <div class="col-sm-9">
 
-                            <div data-date-minviewmode="months" class="input-group input-large date dpMonths col-lg-12" data-date="13/07/2013" data-date-format="mm/dd/yyyy">
+                            <div class="input-group input-large" data-date="13/07/2013" data-date-format="mm/dd/yyyy">
                                 <input type="text" class="form-control dpd1" id="edfrom">
                                 <span class="input-group-addon">To</span>
                                 <input type="text" class="form-control dpd2" id="edto">
