@@ -8,7 +8,7 @@ class PositionsModel extends CI_Model {
 		$this->load->model('LoggerModel','logger');
 	}
 
-	public function LoadPositionsList($id = null){
+	public function LoadList($id = null){
 
 		$this->db->select('p.*, c.FirstName as cFirstName, c.LastName as cLastName, m.FirstName as mFirstName, m.LastName as mLastName');
 		$this->db->from('hr_general_positions as p');
@@ -37,7 +37,7 @@ class PositionsModel extends CI_Model {
 		$this->db->insert('hr_general_positions',$data);
 		$inserted = $this->db->insert_id();
 		if ($inserted > 0) {
-			$result = $this->LoadPositionsList($inserted);
+			$result = $this->LoadList($inserted);
 			if ($result->num_rows() > 0) {
 				return $result->result();
 			}
@@ -78,7 +78,7 @@ class PositionsModel extends CI_Model {
 	    $query = $this->db->update('hr_general_positions', $data);
 		$update = $this->db->affected_rows();
 		if ($update > 0) {
-			$result = $this->LoadPositionsList($id);
+			$result = $this->LoadList($id);
 			if ($result->num_rows() > 0) {
 				return $result->result();
 			}

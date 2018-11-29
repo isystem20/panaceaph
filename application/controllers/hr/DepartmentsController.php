@@ -14,7 +14,7 @@ class DepartmentsController extends pierre_Controller {
 
 		$layout = array('datatable' => TRUE, 'hr_depts' => 'active', 'service'=>'HRService');
 		$data['extra'] = array('class'=>'departments');
-		$data['departments'] = $this->deptmod->LoadDepartmentsList();
+		$data['departments'] = $this->deptmod->LoadList();
 		$this->load->view('layout/meta');
 		$this->load->view('layout/css');
 		$this->load->view('layout/headend');
@@ -142,6 +142,23 @@ class DepartmentsController extends pierre_Controller {
 	}
 
 
+
+    public function LoadList($param = null) {
+        $items = $this->deptmod->LoadList();
+        $lists = $items->result();
+
+        if ($param == 'options') {
+            $output = '<option value="">Select Department</option>';
+            foreach ($lists as $row) {
+                $output .= '<option value="'.$row->Id.'">'.$row->Name.'</option>';
+            }
+            echo $output;
+        }
+        else {
+            echo 'Parameter not defined.';
+        }
+
+    }
 
 
 

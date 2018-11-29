@@ -25,7 +25,8 @@ $(document).ready(function() {
      */
     var nCloneTh = document.createElement('th');
     var nCloneTd = document.createElement('td');
-    nCloneTd.innerHTML = '<img src="../../themes/img/checkbox/radio-off.png">';
+    var base_url = $('#thispage').data('url');
+    nCloneTd.innerHTML = '<img src="'+base_url+'themes/img/checkbox/radio-off.png">';
     nCloneTd.className = "center";
 
     $('#hidden-table-info thead tr').each( function () {
@@ -56,13 +57,13 @@ $(document).ready(function() {
         if ( oTable.fnIsOpen(nTr) )
         {
             /* This row is already open - close it */
-            this.src = "../../themes/img/checkbox/radio-off.png";
+            this.src = base_url+"themes/img/checkbox/radio-off.png";
             oTable.fnClose( nTr );
         }
         else
         {
             /* Open this row */
-            this.src = "../../themes/img/checkbox/radio-on.png";
+            this.src = base_url+"themes/img/checkbox/radio-on.png";
             oTable.fnOpen( nTr, fnFormatDetails(oTable, nTr, par), 'details' );
         }
     } );

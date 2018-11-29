@@ -10,8 +10,6 @@
     <script class="include" type="text/javascript" src="<?php echo base_url(); ?>themes/js/jquery.dcjqaccordion.2.7.js"></script> 
     <script src="<?php echo base_url(); ?>themes/js/jquery-migrate-1.2.1.min.js"></script>
 
-
-
 <?php 
 if (!empty($charts)) {
  ?>
@@ -90,54 +88,15 @@ if (!empty($form)) { ?>
 }
 ?>
 
-<?php 
-if (!empty($datatable)) { ?>
-
-    <!--right slidebar-->
-    <script src="<?php echo base_url(); ?>themes/js/slidebars.min.js"></script>
-
-    <!--common script for all pages-->
-    <script src="<?php echo base_url(); ?>themes/js/common-scripts.js"></script>
-
-
-
-    <!-- 
-    <script src="<?php echo base_url(); ?>themes/js/jquery-ui-1.9.2.custom.min.js"></script>
-    <script src="<?php echo base_url(); ?>themes/js/jquery-migrate-1.2.1.min.js"></script> -->
-    <!-- <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>       -->
-    <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>themes/js/datatable/jquery.dataTables.min.js"></script>   
-
-    <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>themes/js/datatable/dataTables.buttons.min.js"></script>
-    <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>themes/js/datatable/jszip.min.js"></script>
-    <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>themes/js/datatable/pdfmake.min.js"></script>
-    <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>themes/js/datatable/vfs_fonts.js"></script>
-    <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>themes/js/datatable/buttons.html5.min.js"></script>
-
-    <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>themes/assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
-    
-    <script type="text/javascript" src="<?php echo base_url(); ?>themes/assets/data-tables/DT_bootstrap.js"></script>
-    <script src="<?php echo base_url(); ?>themes/js/dynamic_table_init.js"></script>
-<?php
-}
-?>
-
-<?php 
-if (!empty($datepicker)) { ?>
-
-  <script type="text/javascript" src="<?php echo base_url(); ?>themes/assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-  <script type="text/javascript" src="<?php echo base_url(); ?>themes/assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-  <script type="text/javascript" src="<?php echo base_url(); ?>themes/assets/bootstrap-daterangepicker/moment.min.js"></script>
-  <script type="text/javascript" src="<?php echo base_url(); ?>themes/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
-<?php } ?>
 
 <?php 
 if (!empty($advancedform)) { ?>
-    <script src="<?php echo base_url(); ?>themes/js/jquery.js"></script>
+<!--     <script src="<?php echo base_url(); ?>themes/js/jquery.js"></script>
     <script src="<?php echo base_url(); ?>themes/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url(); ?>themes/js/jquery.scrollTo.min.js"></script>
     <script src="<?php echo base_url(); ?>themes/js/jquery.nicescroll.js" type="text/javascript"></script>
     <script src="<?php echo base_url(); ?>themes/js/jquery-ui-1.9.2.custom.min.js"></script>
-    <script class="include" type="text/javascript" src="<?php echo base_url(); ?>themes/js/jquery.dcjqaccordion.2.7.js"></script> 
+    <script class="include" type="text/javascript" src="<?php echo base_url(); ?>themes/js/jquery.dcjqaccordion.2.7.js"></script>  -->
 
 
     <!--right slidebar-->
@@ -227,6 +186,62 @@ if (!empty($advancedform)) { ?>
 <?php
 }
 ?>
+
+
+
+<?php 
+if (!empty($datatable)) { ?>
+
+    <!--right slidebar-->
+    <script src="<?php echo base_url(); ?>themes/js/slidebars.min.js"></script>
+
+    <!--common script for all pages-->
+    <script src="<?php echo base_url(); ?>themes/js/common-scripts.js"></script>
+
+
+
+    <!-- 
+    <script src="<?php echo base_url(); ?>themes/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="<?php echo base_url(); ?>themes/js/jquery-migrate-1.2.1.min.js"></script> -->
+    <!-- <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>       -->
+    <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>themes/js/datatable/jquery.dataTables.min.js"></script>   
+
+    <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>themes/js/datatable/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>themes/js/datatable/jszip.min.js"></script>
+    <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>themes/js/datatable/pdfmake.min.js"></script>
+    <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>themes/js/datatable/vfs_fonts.js"></script>
+    <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>themes/js/datatable/buttons.html5.min.js"></script>
+
+    <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>themes/assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
+    
+    <script type="text/javascript" src="<?php echo base_url(); ?>themes/assets/data-tables/DT_bootstrap.js"></script>
+    <script src="<?php echo base_url(); ?>themes/js/dynamic_table_init.js"></script>
+<?php
+}
+?>
+
+<?php 
+if (!empty($datepicker)) { ?>
+
+  <script type="text/javascript" src="<?php echo base_url(); ?>themes/assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>themes/assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>themes/assets/bootstrap-daterangepicker/moment.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>themes/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+<?php } ?>
+
+
+<?php 
+if (!empty($tree)) { ?>
+    <script src="<?php echo base_url(); ?>themes/assets/fuelux/js/tree.min.js"></script>
+    <script src="<?php echo base_url(); ?>themes/js/tree.js"></script>
+
+  <script>
+      jQuery(document).ready(function() {
+          TreeView.init();
+      });
+  </script>
+<?php } ?>
+
 
     <script src="<?php echo base_url(); ?>themes/assets/toastr-master/toastr.js"></script>
     <!--script for this page-->

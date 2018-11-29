@@ -62,6 +62,17 @@ $route['translate_uri_dashes'] = TRUE;
 $route['login'] = 'AuthController/Login';
 $route['login/authenticate'] = 'AuthController/GoLogin';
 $route['logout'] = 'AuthController/GoLogout';
+
+
+$route['admin/users'] = 'admin/UserController/Masterlist';/* Load Employee */ 	
+$route['admin/users/add']['post'] = 'admin/UserController/Create';/* Post to create */ 	
+$route['admin/users/edit'] = 'admin/UserController/Update';/* Post to edit */ 		
+$route['admin/users/delete'] = 'admin/UserController/Delete';/* Post to delete */ 	
+$route['admin/users/read'] = 'admin/UserController/Read';/* Read Item  */	 	
+$route['admin/users/new'] = 'admin/UserController/RegisterPage';/* Read Item  */
+
+
+
 $route['clients/add'] = 'admin/ClientController/ClientCreate';
 
 $route['hr/dashboard'] = 'hr/DashboardController/index'; /* Load Employee */ 	
@@ -71,8 +82,8 @@ $route['hr/employees/add']['post'] = 'hr/EmployeeController/Create';/* Post to c
 $route['hr/employees/edit'] = 'hr/EmployeeController/Update';/* Post to edit */ 		
 $route['hr/employees/delete'] = 'hr/EmployeeController/Delete';/* Post to delete */ 	
 $route['hr/employees/read'] = 'hr/EmployeeController/Read';/* Read Item  */	 	
-$route['hr/employees/new'] = 'hr/EmployeeController/RegisterPage';/* Read Item  */	 	
-
+$route['hr/employees/new'] = 'hr/EmployeeController/Information';/* Read Item  */	 	
+$route['hr/employees/(:any)'] = 'hr/EmployeeController/Information/$1';/* Read Item  */	
 
 $route['hr/positions'] = 'hr/PositionsController/Masterlist';/* Load Positions Masterlist */ 
 $route['hr/positions/add'] = 'hr/PositionsController/Create';/* Post to create */ 			
@@ -140,6 +151,16 @@ $route['hr/reports'] = 'hr/ReportsController/Masterlist';
 $route['json/cities/(:any)'] = 'generic/ListController/LoadCityList/$1';
 $route['json/nationalities/(:any)'] = 'generic/ListController/LoadNationalityList/$1';
 $route['json/regions/(:any)'] = 'generic/ListController/LoadRegionList/$1';
+$route['json/sites/(:any)'] = 'hr/SitesController/LoadList/$1';
+$route['json/departments/(:any)'] = 'hr/DepartmentsController/LoadList/$1';
+$route['json/costcenters/(:any)'] = 'hr/CostCentersController/LoadList/$1';
+$route['json/groups/(:any)'] = 'hr/GroupsController/LoadList/$1';
+$route['json/superior/(:any)'] = 'hr/EmployeeController/LoadList/$1';
+$route['json/positions/(:any)'] = 'hr/PositionsController/LoadList/$1';
+$route['json/ranks/(:any)'] = 'hr/RanksController/LoadList/$1';
+$route['json/emptypes/(:any)'] = 'hr/EmploymentTypesController/LoadList/$1';
+
+
 
 
 // $route['catchall_controller'] = 'MainController/index'; 

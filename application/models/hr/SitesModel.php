@@ -9,7 +9,7 @@ class SitesModel extends CI_Model {
 	}
 
 
-	public function LoadSitesList($id = null){
+	function LoadList($id = null){
 
 		$this->db->select('p.*, c.FirstName as cFirstName, c.LastName as cLastName, m.FirstName as mFirstName, m.LastName as mLastName');
 		$this->db->from('hr_general_sites as p');
@@ -39,7 +39,7 @@ class SitesModel extends CI_Model {
 		$this->db->insert('hr_general_sites',$data);
 		$inserted = $this->db->insert_id();
 		if ($inserted > 0) {
-			$result = $this->LoadSitesList($inserted);
+			$result = $this->LoadList($inserted);
 			if ($result->num_rows() > 0) {
 				return $result->result();
 			}
@@ -76,7 +76,7 @@ class SitesModel extends CI_Model {
 	    $query = $this->db->update('hr_general_sites', $data);
 		$update = $this->db->affected_rows();
 		if ($update > 0) {
-			$result = $this->LoadSitesList($id);
+			$result = $this->LoadList($id);
 			if ($result->num_rows() > 0) {
 				return $result->result();
 			}

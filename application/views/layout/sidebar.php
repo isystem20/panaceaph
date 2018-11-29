@@ -113,14 +113,14 @@
                         </a>
                     </li>                     
                     <li>
-                        <a class="<?php if(!empty($admin_users)) {echo $admin_users;} ?>" href="<?php echo base_url(); ?>admin/UserController/UserMasterList">
+                        <a class="<?php if(!empty($admin_users)) {echo $admin_users;} ?>" href="<?php echo base_url(); ?>admin/users">
                             <i class="fa fa-dashboard"></i>
                             <span>Users</span>
                         </a>
                     </li>  
 
                     <li>
-                        <a class="<?php if(!empty($admin_services)) {echo $admin_services;} ?>" href="index-2.html">
+                        <a class="<?php if(!empty($admin_services)) {echo $admin_services;} ?>" href="<?php echo base_url(); ?>admin/services">
                             <i class="fa fa-dashboard"></i>
                             <span>Services</span>
                         </a>

@@ -13,7 +13,7 @@ class PositionsController extends pierre_Controller {
 	public function Masterlist()
 	{
 
-		$data['positions'] = $this->posmod->LoadPositionsList();
+		$data['positions'] = $this->posmod->LoadList();
 		$data['extra'] = array('class'=>'positions');
 		$layout = array('datatable' => TRUE, 'form2'=> TRUE, 'hr_emp_list' => 'active', 'service'=>'HRService');
 		$this->load->view('layout/meta');
@@ -42,7 +42,7 @@ class PositionsController extends pierre_Controller {
         else{
         	$postdata = $this->input->post();
         	$id = $postdata['Id'];
-        	$data = $this->posmod->LoadPositionsList($id);
+        	$data = $this->posmod->LoadList($id);
 
         	if ($data->num_rows() > 0) {
         		$result = $data->result();        		
@@ -143,6 +143,23 @@ class PositionsController extends pierre_Controller {
 
         }
 	}
+
+    public function LoadList($param = null) {
+        $items = $this->posmod->LoadList();
+        $lists = $items->result();
+
+        if ($param == 'options') {
+            $output = '<option value="">Select Position</option>';
+            foreach ($lists as $row) {
+                $output .= '<option value="'.$row->Id.'">'.$row->Name.'</option>';
+            }
+            echo $output;
+        }
+        else {
+            echo 'Parameter not defined.';
+        }
+
+    }
 
 
 

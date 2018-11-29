@@ -10,7 +10,7 @@ class CostModel extends CI_Model {
 	}
 
 
-	public function LoadCostList($id = null){
+	public function LoadList($id = null){
 
 		$this->db->select('p.*, c.FirstName as cFirstName, c.LastName as cLastName, m.FirstName as mFirstName, m.LastName as mLastName');
 		$this->db->from('hr_general_costcenters as p');
@@ -39,7 +39,7 @@ class CostModel extends CI_Model {
 		$this->db->insert('hr_general_costcenters',$data);
 		$inserted = $this->db->insert_id();
 		if ($inserted > 0) {
-			$result = $this->LoadCostList($inserted);
+			$result = $this->LoadList($inserted);
 			if ($result->num_rows() > 0) {
 				return $result->result();
 			}
@@ -77,7 +77,7 @@ class CostModel extends CI_Model {
 	    $query = $this->db->update('hr_general_costcenters', $data);
 		$update = $this->db->affected_rows();
 		if ($update > 0) {
-			$result = $this->LoadCostList($id);
+			$result = $this->LoadList($id);
 			if ($result->num_rows() > 0) {
 				return $result->result();
 			}

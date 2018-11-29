@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class CertificatesModel extends CI_Model { 
 	
-	public function LoadCertificatesList(){
+	public function LoadList(){
 
 		$this->db->select('*');
 		$this->db->from('hr_general_certificates');

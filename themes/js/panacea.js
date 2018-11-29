@@ -327,6 +327,63 @@ if ($('select[name=region]').length > 0) {
   });
 }
 
+//SHOW DROPBOX FOR SITE/BRANCH LIST
+if ($('select[name=site]').length > 0) {
+  $.get( $('#thispage').data('url')+$('select[name=site]').attr('get'), function( data ) {
+    $('select[name=site]').html(data);
+  });
+}
+
+//SHOW DROPBOX FOR DEPARTMENTS LIST
+if ($('select[name=department]').length > 0) {
+  $.get( $('#thispage').data('url')+$('select[name=department]').attr('get'), function( data ) {
+    $('select[name=department]').html(data);
+  });
+}
+
+
+//SHOW DROPBOX FOR DEPARTMENTS LIST
+if ($('select[name=costcenter]').length > 0) {
+  $.get( $('#thispage').data('url')+$('select[name=costcenter]').attr('get'), function( data ) {
+    $('select[name=costcenter]').html(data);
+  });
+}
+
+//SHOW DROPBOX FOR DEPARTMENTS LIST
+if ($('select[name=superior]').length > 0) {
+  $.get( $('#thispage').data('url')+$('select[name=superior]').attr('get'), function( data ) {
+    $('select[name=superior]').html(data);
+  });
+}
+
+//SHOW DROPBOX FOR GROUPS/TEAM LIST
+if ($('select[name=team]').length > 0) {
+  $.get( $('#thispage').data('url')+$('select[name=team]').attr('get'), function( data ) {
+    $('select[name=team]').html(data);
+  });
+}
+
+//SHOW DROPBOX FOR POSITION LIST
+if ($('select[name=position]').length > 0) {
+  $.get( $('#thispage').data('url')+$('select[name=position]').attr('get'), function( data ) {
+    $('select[name=position]').html(data);
+  });
+}
+
+//SHOW DROPBOX FOR RANKS LIST
+if ($('select[name=rank]').length > 0) {
+  $.get( $('#thispage').data('url')+$('select[name=rank]').attr('get'), function( data ) {
+    $('select[name=rank]').html(data);
+  });
+}
+
+//SHOW DROPBOX FOR EMPLOYMENT TYPE LIST
+if ($('select[name=type]').length > 0) {
+  $.get( $('#thispage').data('url')+$('select[name=type]').attr('get'), function( data ) {
+    $('select[name=type]').html(data);
+  });
+}
+
 
 //ADD SCHOOLS IN TABLE 
 if ($('#addschool').length > 0) {
@@ -334,6 +391,8 @@ if ($('#addschool').length > 0) {
     var s = $('#schoolname');
     var c =  $('#course');
     var g = $('#graduatedate');
+    var f = $('#edfrom');
+    var t = $('#edto');
     var a = $('#award');
     if (s.val() == '' || g.val() == '') {
         toastr.error('School Name and Year are required.', "");
@@ -341,33 +400,268 @@ if ($('#addschool').length > 0) {
     }
     var str = '';
     str = str + '<tr>';
-    str = str + '  <td><input type="text" placeholder="This item will not be saved without this." class="form-control" name="school" value="'+ s.val() +'"></td>';
-    str = str + '  <td><input type="text" class="form-control" name="degree" value="'+ c.val() +'"></td>';
-    str = str + '  <td><input type="text" class="form-control" name="year" value="'+ g.val() +'"></td>';
-    str = str + '  <td><input type="text" class="form-control" name="award" value="'+ a.val() +'"></td>';
-    str = str + '  <td><button class="btn btn-danger btn-xs rm-educ"><i class="fa fa-trash-o "></i></button></td>';
+    str = str + '  <td><input type="text" placeholder="Can not be empty." class="form-control school" name="school" value="'+ s.val() +'"></td>';
+    str = str + '  <td><input type="text" class="form-control degree" name="degree" value="'+ c.val() +'"></td>';
+    str = str + '  <td><input type="text" class="form-control eyear" name="eyear" value="'+ f.val() + ' to ' + t.val() +'"></td>';
+    str = str + '  <td><input type="text" class="form-control award" name="award" value="'+ a.val() +'"></td>';
+    str = str + '  <td class="actions"><button class="btn btn-danger btn-xs tr-remover"><i class="fa fa-trash-o "></i></button></td>';
     str = str + '</tr>';
     $('#education tbody').append(str);
     s.val('');
     c.val('');
     g.val('');
+    t.val(''); 
+    f.val('');  
     a.val('');
     toastr.info('Education Successfully Added', "");
   });
 }
 
 
+//ADD WORK HISTORY IN TABLE 
+if ($('#addworkhistory').length > 0) {
+  $('#addworkhistory').on("click", function() {
+    var s = $('#ehcompany');
+    var c =  $('#ehposition');
+    var g = $('#ehyear');
+    var f = $('#ehfrom');
+    var t = $('#ehto');
+    var a = $('#ehcontact');
+    if (s.val() == '' || g.val() == '') {
+        toastr.error('Company Name, Position and Year are required.', "");
+        return false;
+    }
+    var str = '';
+    str = str + '<tr>';
+    str = str + '  <td><input type="text" placeholder="Can not be empty." class="form-control" name="ehcompany" value="'+ s.val() +'"></td>';
+    str = str + '  <td><input type="text" class="form-control" name="ehposition" value="'+ c.val() +'"></td>';
+    str = str + '  <td><input type="text" class="form-control" name="ehyear" value="'+ f.val() + ' to ' + t.val() +'"></td>';   
+    str = str + '  <td><input type="text" class="form-control" name="ehcontact" value="'+ a.val() +'"></td>';
+    str = str + '  <td class="actions"><button class="btn btn-danger btn-xs tr-remover"><i class="fa fa-trash-o "></i></button></td>';
+    str = str + '</tr>';
+    $('#workhistory tbody').append(str);
+    s.val('');
+    c.val('');
+    g.val(''); 
+    t.val(''); 
+    f.val('');    
+    a.val('');
+    toastr.info('Previous Employment Successfully Added', "");
+  });
+}
+
+//ADD LICENSE IN TABLE 
+if ($('#addlicense').length > 0) {
+  $('#addlicense').on("click", function() {
+    var s = $('#license');
+    var c =  $('#liprovider');
+    var g = $('#livalidity');
+    if (s.val() == '' || g.val() == '') {
+        toastr.error('License Name, Issuer and Validity are required.', "");
+        return false;
+    }
+    var str = '';
+    str = str + '<tr>';
+    str = str + '  <td><input type="text" placeholder="Can not be empty." class="form-control" name="license" value="'+ s.val() +'"></td>';
+    str = str + '  <td><input type="text" class="form-control" name="liprovider" value="'+ c.val() +'"></td>';
+    str = str + '  <td><input type="text" class="form-control" name="livalidity" value="'+ g.val() +'"></td>';
+    str = str + '  <td class="actions"><button class="btn btn-danger btn-xs tr-remover"><i class="fa fa-trash-o "></i></button></td>';
+    str = str + '</tr>';
+    $('#license tbody').append(str);
+    s.val('');
+    c.val('');
+    g.val('');
+    toastr.info('License Successfully Added', "");
+  });
+}
+
+//ADD TRAINING IN TABLE 
+if ($('#addtraining').length > 0) {
+  $('#addtraining').on("click", function() {
+    var s = $('#training');
+    var c =  $('#tcprovider');
+    var g = $('#tcdate');
+    if (s.val() == '' || g.val() == '') {
+        toastr.error('License Name, Issuer and Validity are required.', "");
+        return false;
+    }
+    var str = '';
+    str = str + '<tr>';
+    str = str + '  <td><input type="text" placeholder="Can not be empty." class="form-control" name="training" value="'+ s.val() +'"></td>';
+    str = str + '  <td><input type="text" class="form-control" name="tcprovider" value="'+ c.val() +'"></td>';
+    str = str + '  <td><input type="text" class="form-control" name="tcdate" value="'+ g.val() +'"></td>';
+    str = str + '  <td class="actions"><button class="btn btn-danger btn-xs tr-remover"><i class="fa fa-trash-o "></i></button></td>';
+    str = str + '</tr>';
+    $('#training tbody').append(str);
+    s.val('');
+    c.val('');
+    g.val('');
+    toastr.info('Training/Certificate Successfully Added', "");
+  });
+}
+
+//ADD DEPENDENT IN TABLE 
+if ($('#adddependent').length > 0) {
+  $('#adddependent').on("click", function() {
+    var s = $('#dependent');
+    var c =  $('#relation');
+    var g = $('#depbdate');
+    if (s.val() == '' || g.val() == '') {
+        toastr.error('License Name, Issuer and Validity are required.', "");
+        return false;
+    }
+    var str = '';
+    str = str + '<tr>';
+    str = str + '  <td><input type="text" placeholder="Can not be empty." class="form-control" name="dependent" value="'+ s.val() +'"></td>';
+    str = str + '  <td><input type="text" class="form-control" name="relation" value="'+ c.val() +'"></td>';
+    str = str + '  <td><input type="text" class="form-control" name="depbdate" value="'+ g.val() +'"></td>';
+    str = str + '  <td class="actions"><button class="btn btn-danger btn-xs tr-remover"><i class="fa fa-trash-o "></i></button></td>';
+    str = str + '</tr>';
+    $('#dependents tbody').append(str);
+    s.val('');
+    c.val('');
+    g.val('');
+    toastr.info('Dependent Successfully Added', "");
+  });
+}
+
+
+//REMOVE EDUC/WORK/LICENSE ENTRY
+$('.table').delegate(".tr-remover", "click", function() {
+  var tr = $(this).closest('tr');
+  $(tr).remove();
+});
 
 
 //SUBMIT ADD EMPLOYEE
 $('#employeeform').submit(function(e) {
     e.preventDefault();
 
+    var school = new Array();
+    $("input[name=school]").each(function() {
+       school.push($(this).val());
+    });
+    var degree = new Array();
+    $("input[name=degree]").each(function() {
+       degree.push($(this).val());
+    });
+    var eyear = new Array();
+    $("input[name=eyear]").each(function() {
+       eyear.push($(this).val());
+    });
+
+    var award = new Array();
+    $("input[name=award]").each(function() {
+       award.push($(this).val());
+    });
+    var ehcompany = new Array();
+    $("input[name=ehcompany]").each(function() {
+       ehcompany.push($(this).val());
+    });
+    var ehposition = new Array();
+    $("input[name=ehposition]").each(function() {
+       ehposition.push($(this).val());
+    });
+    var ehyear = new Array();
+    $("input[name=ehyear]").each(function() {
+       ehyear.push($(this).val());
+    });
+    var ehcontact = new Array();
+    $("input[name=ehcontact]").each(function() {
+       ehcontact.push($(this).val());
+    });
+    var license = new Array();
+    $("input[name=license]").each(function() {
+       license.push($(this).val());
+    });
+    var liprovider = new Array();
+    $("input[name=liprovider]").each(function() {
+       liprovider.push($(this).val());
+    });
+    var livalidity = new Array();
+    $("input[name=livalidity]").each(function() {
+       livalidity.push($(this).val());
+    });
+    var training = new Array();
+    $("input[name=training]").each(function() {
+       training.push($(this).val());
+    });
+    var tcprovider = new Array();
+    $("input[name=tcprovider]").each(function() {
+       tcprovider.push($(this).val());
+    });
+    var tcdate = new Array();
+    $("input[name=tcdate]").each(function() {
+       tcdate.push($(this).val());
+    });
+    var dependent = new Array();
+    $("input[name=dependent]").each(function() {
+       dependent.push($(this).val());
+    });
+    var relation = new Array();
+    $("input[name=relation]").each(function() {
+       relation.push($(this).val());
+    });
+    var depbdate = new Array();
+    $("input[name=depbdate]").each(function() {
+       depbdate.push($(this).val());
+    });
+
+
+
+
     $("#employeesubmit").prop("disabled", true);
     var newURL = $(this).attr('action');
     var newData  = {
-            'firstname' : $('input[name=firstname]').val(),
-            'lastname' : $('input[name=lastname]').val(),
+            'CompanyId' : $('input[name=companyid]').val(),
+            'FirstName' : $('input[name=firstname]').val(),
+            'LastName' : $('input[name=lastname]').val(),
+            'MiddleName' : $('input[name=middlename]').val(),
+            'Suffix' :  $('input[name=suffix]').val(),
+            'Birthdate' : $('input[name=birthdate]').val(),
+            'CivilStatus' : $('select[name=civilstatus]').val(),
+            'NationalityId' : $('select[name=nationality]').val(),
+            'Address1' : $('input[name=address]').val(),
+            'CityId' : $('select[name=city]').val(),
+            'ProvinceId' : $('select[name=region]').val(),
+            'PersonalEmail' : $('input[name=email]').val(),
+            'MobileNo' : $('input[name=mobile]').val(),
+            'TelNo' : $('input[name=landline]').val(),
+            'Code' : $('input[name=employeenumber]').val(),
+            'CompanyEmail' : $('input[name=companyemail]').val(),
+            'CompanyContact' : $('input[name=contactnumber]').val(),
+            'SiteId' : $('select[name=site]').val(),
+            'DepartmentId' : $('select[name=department]').val(),
+            'CostCenterId' : $('select[name=costcenter]').val(),
+            'EmployeeGroupId' : $('select[name=team]').val(),
+            'Leader1' : $('select[name=superior]').val(),
+            'PositionId' : $('select[name=position]').val(),
+            'EmployeeRankId' : $('select[name=rank]').val(),
+            'EmployeeTypeId' : $('select[name=type]').val(),
+            'DateHired' : $('input[name=hiredate]').val(),
+            'Duration' :$('input[name=duration]').val(), 
+            'Shift' :  $('input[name=shift]').val(),
+            'SSS' : $('input[name=sss]').val(),
+            'TIN' : $('input[name=tin]').val(),
+            'PHILHEALTH' : $('input[name=philhealth]').val(),
+            'PAGIBIG' : $('input[name=hdmf]').val(),
+            'education_school' : school,
+            'education_degree' : degree,
+            'education_year' : eyear,
+            'education_award' : award,
+            'work_company' : ehcompany,
+            'work_position' : ehposition,
+            'work_year' : ehyear,
+            'work_contact' : ehcontact,
+            'license_name' : license,
+            'license_provider' : liprovider,
+            'license_validity' : livalidity,
+            'training_name' : training,
+            'training_provider' : tcprovider,
+            'training_date' : tcdate,
+            'dependent_name' : training,
+            'dependent_relation' : relation,
+            'dependent_bdate' : depbdate,
 
         }
       $.ajax({
@@ -381,9 +675,9 @@ $('#employeeform').submit(function(e) {
                   toastr.success("Record Updated", "Successful");  
               }
               else{
-                  // toastr.error(data.error, "Error");
+                  toastr.error(data.error, "Error");
                   $.each(data.responses, function(key,value) {
-                    var element = $('input[name='+key+']');
+                    var element = $('.'+key);
                     element.next('.help-block').remove();
                     element.removeClass('field-error');
                     element.addClass(value.length > 0 ? 'field-error' : '');
