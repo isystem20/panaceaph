@@ -99,25 +99,21 @@ $class = $extra['class'];
                                     <tr class="gradeX">
                                         <td>
                                      
-                                              <!-- <div class="checkboxes"> -->
-                                              <!-- <label class="label_check c_off" for="checkbox-02"> -->
-                                              <!-- <input name="emps[]" id="<?php echo $row->Id ?>" value="<?php echo $row->Id ?>" type="checkbox">  -->
-                                              <input name="emps[]" id="<?php echo $row->Id ?>" type="checkbox" style="width: 20px" class="checkbox form-control">
-                                            <!-- . </label> -->
-                                            <!-- </div> -->
+
+                                              <input name="emps[]" id="<?php echo $row->Id ?>" type="checkbox" style="width: 17px" class="checkbox form-control">
+
 
                                         </td>
                                         <td><label class="text-reg" for="<?php echo $row->Id ?>"><?php echo $row->LastName; ?></label></td>
                                         <td><label class="text-reg" for="<?php echo $row->Id ?>"><?php echo $row->FirstName; ?></label></td>
-                                        <td><label class="text-reg" for="<?php echo $row->Id ?>"><?php echo $row->PositionId; ?></label></td>
-                                        <td><label class="text-reg" for="<?php echo $row->Id ?>"><?php echo $row->DepartmentId; ?></label></td>
-                                        <td><label class="text-reg" for="<?php echo $row->Id ?>"><?php echo $row->Leader1; ?></label></td>   
-
+                                        <td><label class="text-reg" for="<?php echo $row->Id ?>"><?php echo $row->PositionName; ?></label></td>
+                                        <td><label class="text-reg" for="<?php echo $row->Id ?>"><?php echo $row->DepartmentName; ?></label></td>
+                                        <td><label class="text-reg" for="<?php echo $row->Id ?>"><?php echo $row->SFirstName.' '.$row->SLastName; ?></label>
+                                        </td>   
                                         <td>
                                               <button data-id="<?php echo $row->Id; ?>" class="btn btn-success btn-xs open-generic-item-btn"data-action="hr/<?php echo $class; ?>/read"><i class="fa fa-info-circle"></i></button>
                                               <a href="<?=base_url('hr/employees/'.$row->Id); ?>" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                                               <button data-id="<?php echo $row->Id; ?>" class="btn btn-danger btn-xs delete-generic-item-btn" data-action="hr/<?php echo $class; ?>/delete"><i class="fa fa-trash-o "></i></button>
-
 
                                         </td>                                       
                                     </tr>
@@ -132,7 +128,12 @@ $class = $extra['class'];
 
                                     ?>
 
-
+<!--                                         <div  style="width:10px !important;" >
+                                            <label class="container">
+                                              <input type="checkbox" checked="checked">
+                                              <span class="checkmark"></span>
+                                            </label>
+                                        </div> -->
                                     
                                 </tbody>
                                 <tfoot>

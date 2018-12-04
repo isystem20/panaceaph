@@ -60,7 +60,6 @@ class EmployeeController extends pierre_Controller {
         $this->form_validation->set_rules('CivilStatus', 'civil status', 'required',$custom_required);
         $this->form_validation->set_rules('NationalityId', 'nationality', 'required',$custom_required);
         $this->form_validation->set_rules('Address1', 'address', 'required',$custom_required);
-       
         $this->form_validation->set_rules('CityId', 'birthdate', 'required',$custom_required);
         $this->form_validation->set_rules('ProvinceId', 'region', 'required',$custom_required);
         $this->form_validation->set_rules('PersonalEmail', 'email', 'required|valid_email',$custom_required);
@@ -69,49 +68,13 @@ class EmployeeController extends pierre_Controller {
         $this->form_validation->set_rules('SiteId', 'site', 'required',$custom_required);
         $this->form_validation->set_rules('DepartmentId', 'department', 'required',$custom_required);
         $this->form_validation->set_rules('CostCenterId', 'costcenter', 'required',$custom_required);
-
         $this->form_validation->set_rules('Leader1', 'superior', 'required',$custom_required);
         $this->form_validation->set_rules('PositionId', 'position', 'required',$custom_required);
         $this->form_validation->set_rules('EmployeeRankId', 'rank', 'required',$custom_required);
         $this->form_validation->set_rules('EmployeeTypeId', 'type', 'required',$custom_required);
-
         $this->form_validation->set_rules('DateHired', 'hire date', 'required',$custom_required);
         $this->form_validation->set_rules('Duration', 'duration', 'required',$custom_required);
-
-
-
-
-        // $this->form_validation->set_rules('FirstName', 'first name', 'required');
-        // $this->form_validation->set_rules('LastName', 'last name', 'required');
-        // $this->form_validation->set_rules('MiddleName', 'middle name', 'required');
-        // $this->form_validation->set_rules('Birthdate', 'birthdate', 'required');
-        // $this->form_validation->set_rules('CivilStatus', 'civil status', 'required');
-        // $this->form_validation->set_rules('NationalityId', 'nationality', 'required');
-        // $this->form_validation->set_rules('Address1', 'address', 'required');
-       
-        // $this->form_validation->set_rules('CityId', 'birthdate', 'required');
-        // $this->form_validation->set_rules('ProvinceId', 'region', 'required');
-        // $this->form_validation->set_rules('PersonalEmail', 'email', 'required|valid_email');
-        // $this->form_validation->set_rules('Code', 'employee number', 'required');
-        // $this->form_validation->set_rules('CompanyEmail', 'company email', 'required|valid_email');
-        // $this->form_validation->set_rules('SiteId', 'site', 'required');
-        // $this->form_validation->set_rules('DepartmentId', 'department', 'required');
-        // $this->form_validation->set_rules('CostCenterId', 'costcenter', 'required');
-
-        // $this->form_validation->set_rules('Leader1', 'superior', 'required');
-        // $this->form_validation->set_rules('PositionId', 'position', 'required');
-        // $this->form_validation->set_rules('EmployeeRankId', 'rank', 'required');
-        // $this->form_validation->set_rules('EmployeeTypeId', 'type', 'required');
-
-        // $this->form_validation->set_rules('DateHired', 'hire date', 'required');
-        // $this->form_validation->set_rules('Duration', 'duration', 'required');
-
-
-
-
-
         // $this->form_validation->set_rules('Shift', 'shift', 'required');
-
         $this->form_validation->set_error_delimiters('<p class="help-block">','</p>');
         $postdata = $this->input->post();
         if ($this->form_validation->run() == FALSE){
@@ -132,7 +95,7 @@ class EmployeeController extends pierre_Controller {
         }
         else{
         	// echo json_encode($postdata);
-
+            $postdata = array_filter($postdata, 'strlen');
         	$result = $this->empmod->Create($postdata);
         	if ($result != FALSE) {
 	        	$json = json_encode($result);

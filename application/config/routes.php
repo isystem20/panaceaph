@@ -58,6 +58,8 @@ $route['translate_uri_dashes'] = TRUE;
 
 
 
+$route['profile'] = 'generic/HomeController/Profile';
+
 
 $route['login'] = 'AuthController/Login';
 $route['login/authenticate'] = 'AuthController/GoLogin';
@@ -71,6 +73,17 @@ $route['admin/users/delete'] = 'admin/UserController/Delete';/* Post to delete *
 $route['admin/users/read'] = 'admin/UserController/Read';/* Read Item  */	 	
 $route['admin/users/new'] = 'admin/UserController/RegisterPage';/* Read Item  */
 
+$route['admin/services'] = 'admin/ServicesController/Masterlist';/* Read Item  */
+$route['admin/services/add']['post'] = 'admin/ServicesController/Create';/* Post to create */ 	
+$route['admin/services/edit'] = 'admin/ServicesController/Update';/* Post to edit */ 		
+$route['admin/services/delete'] = 'admin/ServicesController/Delete';/* Post to delete */ 	
+$route['admin/services/read'] = 'admin/ServicesController/Read';/* Read Item  */	
+
+$route['admin/modules'] = 'admin/ModulesController/Masterlist';/* Read Item  */
+$route['admin/modules/add']['post'] = 'admin/ModulesController/Create';/* Post to create */ 	
+$route['admin/modules/edit'] = 'admin/ModulesController/Update';/* Post to edit */ 		
+$route['admin/modules/delete'] = 'admin/ModulesController/Delete';/* Post to delete */ 	
+$route['admin/modules/read'] = 'admin/ModulesController/Read';/* Read Item  */	
 
 
 $route['clients/add'] = 'admin/ClientController/ClientCreate';

@@ -105,8 +105,15 @@
                             </div>
                           </div>
 
+                    </div>
+                </div>
+              </section>
+
+               <section class="panel">
+                  <div class="panel-body">
+
                           <div id="employmentrecords">
-                            <div class="mb-20 mt-40">
+                            <div class="mb-20">
                               <span class="label label-primary">EMPLOYMENT RECORDS</span> 
                             </div>  
                             <div class="form-group">
@@ -258,9 +265,9 @@
                             </div>  
 
                           </div>
-                        </div>
+                   
 
-                      </div>
+                  </div>
 
                 </section>
 

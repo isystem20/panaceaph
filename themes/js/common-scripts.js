@@ -49,10 +49,32 @@ var Script = function () {
                 $('#sidebar > ul').hide();
             }
 
-            if (wSize > 768) {
-                $('#container').removeClass('sidebar-close');
-                $('#sidebar > ul').show();
+            else if (wSize > 768) {
+                if ($('#container').data('sidebar') == 'close') {
+                    $('#main-content').css({
+                        'margin-left': '0px'
+                    });
+                    $('#sidebar').css({
+                        'margin-left': '-210px'
+                    });
+                    $('#sidebar > ul').hide();
+                    $("#container").addClass("sidebar-closed");                
+                }
+                if ($('#container').data('sidebar') == 'open') {
+                    $('#main-content').css({
+                        'margin-left': '210px'
+                    });
+                    $('#sidebar > ul').show();
+                    $('#sidebar').css({
+                        'margin-left': '0'
+                    });
+                    $("#container").removeClass("sidebar-closed");               
+                }
+
+                // $('#container').removeClass('sidebar-close');
+                // $('#sidebar > ul').show();
             }
+
         }
 
         $(window).on('load', responsiveView);
@@ -84,8 +106,11 @@ var Script = function () {
             });
             $("#container").removeClass("sidebar-closed");
         }
-        var owl = $("#owl-demo").data("owlCarousel");
-        owl.reinit();
+        if ($("#owl-demo").length > 0) {
+            var owl = $("#owl-demo").data("owlCarousel");
+            owl.reinit();            
+        }
+
     });
 
 // custom scrollbar

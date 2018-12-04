@@ -400,7 +400,7 @@ if ($('#addschool').length > 0) {
     }
     var str = '';
     str = str + '<tr>';
-    str = str + '  <td><input type="text" placeholder="Can not be empty." class="form-control school" name="school" value="'+ s.val() +'"></td>';
+    str = str + '  <td><input type="text" placeholder="Can not be empty." readonly class="form-control school" name="school" value="'+ s.val() +'"></td>';
     str = str + '  <td><input type="text" class="form-control degree" name="degree" value="'+ c.val() +'"></td>';
     str = str + '  <td><input type="text" class="form-control eyear" name="eyear" value="'+ f.val() + ' to ' + t.val() +'"></td>';
     str = str + '  <td><input type="text" class="form-control award" name="award" value="'+ a.val() +'"></td>';
@@ -433,7 +433,7 @@ if ($('#addworkhistory').length > 0) {
     }
     var str = '';
     str = str + '<tr>';
-    str = str + '  <td><input type="text" placeholder="Can not be empty." class="form-control" name="ehcompany" value="'+ s.val() +'"></td>';
+    str = str + '  <td><input type="text" placeholder="Can not be empty." readonly class="form-control" name="ehcompany" value="'+ s.val() +'"></td>';
     str = str + '  <td><input type="text" class="form-control" name="ehposition" value="'+ c.val() +'"></td>';
     str = str + '  <td><input type="text" class="form-control" name="ehyear" value="'+ f.val() + ' to ' + t.val() +'"></td>';   
     str = str + '  <td><input type="text" class="form-control" name="ehcontact" value="'+ a.val() +'"></td>';
@@ -462,7 +462,7 @@ if ($('#addlicense').length > 0) {
     }
     var str = '';
     str = str + '<tr>';
-    str = str + '  <td><input type="text" placeholder="Can not be empty." class="form-control" name="license" value="'+ s.val() +'"></td>';
+    str = str + '  <td><input type="text" placeholder="Can not be empty." readonly class="form-control" name="license" value="'+ s.val() +'"></td>';
     str = str + '  <td><input type="text" class="form-control" name="liprovider" value="'+ c.val() +'"></td>';
     str = str + '  <td><input type="text" class="form-control" name="livalidity" value="'+ g.val() +'"></td>';
     str = str + '  <td class="actions"><button class="btn btn-danger btn-xs tr-remover"><i class="fa fa-trash-o "></i></button></td>';
@@ -487,7 +487,7 @@ if ($('#addtraining').length > 0) {
     }
     var str = '';
     str = str + '<tr>';
-    str = str + '  <td><input type="text" placeholder="Can not be empty." class="form-control" name="training" value="'+ s.val() +'"></td>';
+    str = str + '  <td><input type="text" placeholder="Can not be empty." readonly class="form-control" name="training" value="'+ s.val() +'"></td>';
     str = str + '  <td><input type="text" class="form-control" name="tcprovider" value="'+ c.val() +'"></td>';
     str = str + '  <td><input type="text" class="form-control" name="tcdate" value="'+ g.val() +'"></td>';
     str = str + '  <td class="actions"><button class="btn btn-danger btn-xs tr-remover"><i class="fa fa-trash-o "></i></button></td>';
@@ -512,7 +512,7 @@ if ($('#adddependent').length > 0) {
     }
     var str = '';
     str = str + '<tr>';
-    str = str + '  <td><input type="text" placeholder="Can not be empty." class="form-control" name="dependent" value="'+ s.val() +'"></td>';
+    str = str + '  <td><input type="text" placeholder="Can not be empty." readonly class="form-control" name="dependent" value="'+ s.val() +'"></td>';
     str = str + '  <td><input type="text" class="form-control" name="relation" value="'+ c.val() +'"></td>';
     str = str + '  <td><input type="text" class="form-control" name="depbdate" value="'+ g.val() +'"></td>';
     str = str + '  <td class="actions"><button class="btn btn-danger btn-xs tr-remover"><i class="fa fa-trash-o "></i></button></td>';
@@ -539,74 +539,158 @@ $('#employeeform').submit(function(e) {
 
     var school = new Array();
     $("input[name=school]").each(function() {
+      if ($(this).val() == '') {
+        school.push('-');
+      }
+      else {
        school.push($(this).val());
+      }
     });
     var degree = new Array();
     $("input[name=degree]").each(function() {
+      if ($(this).val() == '') {
+        degree.push('-');
+      }
+      else {
        degree.push($(this).val());
+      }
     });
     var eyear = new Array();
     $("input[name=eyear]").each(function() {
+      if ($(this).val() == '') {
+        eyear.push('-');
+      }
+      else {
        eyear.push($(this).val());
+     }
     });
 
     var award = new Array();
     $("input[name=award]").each(function() {
+      if ($(this).val() == '') {
+        award.push('-');
+      }
+      else {
        award.push($(this).val());
+     }
     });
     var ehcompany = new Array();
     $("input[name=ehcompany]").each(function() {
+      if ($(this).val() == '') {
+        ehcompany.push('-');
+      }
+      else {
        ehcompany.push($(this).val());
+     }
     });
     var ehposition = new Array();
     $("input[name=ehposition]").each(function() {
+      if ($(this).val() == '') {
+        ehposition.push('-');
+      }
+      else {
        ehposition.push($(this).val());
+     }
     });
     var ehyear = new Array();
     $("input[name=ehyear]").each(function() {
+      if ($(this).val() == '') {
+        ehyear.push('-');
+      }
+      else {
        ehyear.push($(this).val());
+      }
     });
     var ehcontact = new Array();
     $("input[name=ehcontact]").each(function() {
+      if ($(this).val() == '') {
+        ehcontact.push('-');
+      }
+      else {
        ehcontact.push($(this).val());
+     }
     });
     var license = new Array();
     $("input[name=license]").each(function() {
+      if ($(this).val() == '') {
+        license.push('-');
+      }
+      else {
        license.push($(this).val());
+     }
     });
     var liprovider = new Array();
     $("input[name=liprovider]").each(function() {
+      if ($(this).val() == '') {
+        liprovider.push('-');
+      }
+      else {
        liprovider.push($(this).val());
+     }
     });
     var livalidity = new Array();
     $("input[name=livalidity]").each(function() {
+      if ($(this).val() == '') {
+        livalidity.push('-');
+      }
+      else {
        livalidity.push($(this).val());
+     }
     });
     var training = new Array();
     $("input[name=training]").each(function() {
+      if ($(this).val() == '') {
+        training.push('-');
+      }
+      else {
        training.push($(this).val());
+     }
     });
     var tcprovider = new Array();
     $("input[name=tcprovider]").each(function() {
+      if ($(this).val() == '') {
+        tcprovider.push('-');
+      }
+      else {
        tcprovider.push($(this).val());
+     }
     });
     var tcdate = new Array();
     $("input[name=tcdate]").each(function() {
+      if ($(this).val() == '') {
+        tcdate.push('-');
+      }
+      else {
        tcdate.push($(this).val());
+     }
     });
     var dependent = new Array();
     $("input[name=dependent]").each(function() {
+      if ($(this).val() == '') {
+        dependent.push('-');
+      }
+      else {
        dependent.push($(this).val());
+     }
     });
     var relation = new Array();
     $("input[name=relation]").each(function() {
+      if ($(this).val() == '') {
+        relation.push('-');
+      }
+      else {
        relation.push($(this).val());
+     }
     });
     var depbdate = new Array();
     $("input[name=depbdate]").each(function() {
+      if ($(this).val() == '') {
+        depbdate.push('-');
+      }
+      else {
        depbdate.push($(this).val());
+     }
     });
-
 
 
 

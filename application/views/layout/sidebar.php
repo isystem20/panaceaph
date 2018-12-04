@@ -1,6 +1,6 @@
       <!--sidebar start-->
       <aside>
-          <div id="sidebar"  class="nav-collapse ">
+          <div id="sidebar"  class="nav-collapse " style="margin-left: -210px;">
               <!-- sidebar menu start-->
 
               <ul class="sidebar-menu" id="nav-accordion">

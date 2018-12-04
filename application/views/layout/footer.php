@@ -14,4 +14,8 @@
   .text-static:read-only {
     background-color: #ffffff;
   }
+  .text-static:disabled {
+    background-color: #ffffff;
+  }
+
 </style>

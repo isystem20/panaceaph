@@ -7,19 +7,17 @@
     <script src="<?php echo base_url(); ?>themes/js/jquery.scrollTo.min.js"></script>
     <script src="<?php echo base_url(); ?>themes/js/jquery.nicescroll.js" type="text/javascript"></script>
     <script src="<?php echo base_url(); ?>themes/js/jquery-ui-1.9.2.custom.min.js"></script>
-    <script class="include" type="text/javascript" src="<?php echo base_url(); ?>themes/js/jquery.dcjqaccordion.2.7.js"></script> 
+    <script src="<?php echo base_url(); ?>themes/js/jquery.dcjqaccordion.2.7.js" type="text/javascript"></script> 
     <script src="<?php echo base_url(); ?>themes/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="<?php echo base_url(); ?>themes/js/slidebars.min.js"></script>
+    <script src="<?php echo base_url(); ?>themes/js/common-scripts.js"></script>
+
 
 <?php 
 if (!empty($charts)) {
  ?>
 
     <!--right slidebar-->
-    <script src="<?php echo base_url(); ?>themes/js/slidebars.min.js"></script>
-
-    <!--common script for all pages-->
-    <script src="<?php echo base_url(); ?>themes/js/common-scripts.js"></script>
-
 
     <script src="<?php echo base_url(); ?>themes/js/jquery.sparkline.js" type="text/javascript"></script>
     <script src="<?php echo base_url(); ?>themes/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
@@ -91,7 +89,7 @@ if (!empty($form)) { ?>
 
 <?php 
 if (!empty($advancedform)) { ?>
-<!--     <script src="<?php echo base_url(); ?>themes/js/jquery.js"></script>
+    <!-- <script src="<?php echo base_url(); ?>themes/js/jquery.js"></script>
     <script src="<?php echo base_url(); ?>themes/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url(); ?>themes/js/jquery.scrollTo.min.js"></script>
     <script src="<?php echo base_url(); ?>themes/js/jquery.nicescroll.js" type="text/javascript"></script>
@@ -191,15 +189,6 @@ if (!empty($advancedform)) { ?>
 
 <?php 
 if (!empty($datatable)) { ?>
-
-    <!--right slidebar-->
-    <script src="<?php echo base_url(); ?>themes/js/slidebars.min.js"></script>
-
-    <!--common script for all pages-->
-    <script src="<?php echo base_url(); ?>themes/js/common-scripts.js"></script>
-
-
-
     <!-- 
     <script src="<?php echo base_url(); ?>themes/js/jquery-ui-1.9.2.custom.min.js"></script>
     <script src="<?php echo base_url(); ?>themes/js/jquery-migrate-1.2.1.min.js"></script> -->
@@ -242,6 +231,67 @@ if (!empty($tree)) { ?>
   </script>
 <?php } ?>
 
+<?php 
+if (!empty($knobs)) { ?>
+    <script src="<?php echo base_url(); ?>themes/assets/jquery-knob/js/jquery.knob.js"></script>
+    <script src="<?php echo base_url(); ?>themes/js/respond.min.js" ></script>
+
+  <script>
+      //knob
+      $(".knob").knob();
+  </script>
+<?php } ?>
+
+<?php if (!empty($uploadfile)) { ?>
+    <script src="<?php echo base_url(); ?>themes/assets/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="<?php echo base_url(); ?>themes/assets/sparkline/jquery.sparkline.min.js"></script>
+    <script src="<?php echo base_url(); ?>themes/assets/dropify/dist/js/dropify.min.js"></script>
+    <script>
+    $(document).ready(function() {
+      
+        $('.dropify').dropify();
+
+        $('.dropify-fr').dropify({
+            messages: {
+                default: 'Glissez-déposez un fichier ici ou cliquez',
+                replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+                remove: 'Supprimer',
+                error: 'Désolé, le fichier trop volumineux'
+            }
+        });
+
+    
+        var drEvent = $('#input-file-events').dropify();
+
+        drEvent.on('dropify.beforeClear', function(event, element) {
+            return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+        });
+
+        drEvent.on('dropify.afterClear', function(event, element) {
+            alert('File deleted');
+        });
+
+        drEvent.on('dropify.errors', function(event, element) {
+            console.log('Has Errors');
+        });
+
+        var drDestroy = $('#input-file-to-destroy').dropify();
+        drDestroy = drDestroy.data('dropify')
+        $('#toggleDropify').on('click', function(e) {
+            e.preventDefault();
+            if (drDestroy.isDropified()) {
+                drDestroy.destroy();
+            } else {
+                drDestroy.init();
+            }
+        })
+    });
+    </script>
+   
+    <script src="<?php echo base_url(); ?>themes/assets/styleswitcher/jQuery.style.switcher.js"></script>
+<?php } ?>
+
+
 
     <script src="<?php echo base_url(); ?>themes/assets/toastr-master/toastr.js"></script>
     <!--script for this page-->
@@ -250,6 +300,14 @@ if (!empty($tree)) { ?>
           $('#package_select option[value=<?php echo $service; ?>]').attr('selected','');
     </script>
 
+
+
+<script type="text/javascript">
+$(function() {
+    $(".preloader").fadeOut();
+});
+
+</script>
   </body>
 
 </html>

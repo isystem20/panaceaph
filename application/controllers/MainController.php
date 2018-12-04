@@ -7,8 +7,6 @@ class MainController extends Pierre_Controller {
 		parent::__construct();
 	}
 
-
-
 	public function index()
 	{
 		// $access = $this->session->userdata('access');
@@ -17,7 +15,6 @@ class MainController extends Pierre_Controller {
   //       }
 		// print_r($this->session->userdata());
 		// $companycode = $this->session->userdata('companycode');
-
 		$services = $this->session->userdata('access');
 		if (!empty($services)) {
 			$uniques = [];
@@ -27,13 +24,15 @@ class MainController extends Pierre_Controller {
 						return redirect(base_url().$row->moduleURL);
 					}
 					else {
-						die('Default Page Not found.');
+						return redirect(base_url('profile'));
 					}
 				}
 			}
+			return redirect(base_url('profile'));
+
 		}
 		else {
-			die('Default Page Not Found.');
+			die('Service Information Failed');
 		}
 	
 	}
