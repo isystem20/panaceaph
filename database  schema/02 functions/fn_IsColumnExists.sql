@@ -1,0 +1,22 @@
+DELIMITER $$
+DROP FUNCTION IF EXISTS fn_IsColumnExists $$
+CREATE FUNCTION fn_IsColumnExists(_TableName VARCHAR(500), _FieldName VARCHAR(500)) RETURNS INT
+BEGIN
+ 
+	DECLARE _RowCount INT;
+	
+	SET _RowCount = 0;
+	
+    SELECT COUNT(TABLE_NAME) INTO _RowCount
+	FROM INFORMATION_SCHEMA.COLUMNS
+	WHERE TABLE_NAME = _TableName
+		AND COLUMN_NAME = _FieldName
+		
+	SELECT IF (_RowCount == 1, , 
+	
+	
+)
+		
+	
+	RETURN _RowCount;
+END$$

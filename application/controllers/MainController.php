@@ -3,6 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MainController extends pierre_Controller {
 
+
+	public function __construct() {
+		parent::__construct();
+		$this->load->model('core/AccessModel', 'mod');
+	}
+
 	/**
 	 * Index Page for this controller.
 	 *
@@ -20,15 +26,25 @@ class MainController extends pierre_Controller {
 	 */
 	public function index()
 	{
+		$UserId = 1;
+		$results['modules'] = $this->mod->get_access_items($UserId);
+		$results['parents'] = $this->mod->get_access_parents($results['modules']);
+		$results['services'] = $this->mod->get_services($results['modules']);
+
+
+
 		$this->load->view('layout/meta');
 		$this->load->view('layout/css');
+		$this->load->view('layout/js');	
 		$this->load->view('layout/headend');
 		$this->load->view('layout/sectionstart');
 		$this->load->view('layout/header');
-		$this->load->view('layout/sidebar');
+		$this->load->view('layout/sidebar', $results);
 		$this->load->view('generic/dashboard');
 		$this->load->view('layout/rightsidebar');	
 		$this->load->view('layout/footer');	
-		$this->load->view('layout/js');	
+		
 	}
+
+
 }

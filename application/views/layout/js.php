@@ -187,10 +187,11 @@
     <script src="<?php echo base_url(); ?>themes/js/panacea.js"></script>
 
 
-
+    <!--
       <script type="text/javascript">
             $('#package_select option[value=<?php echo $service; ?>]').attr('selected','');
       </script>
+    -->
 
   </body>
 
