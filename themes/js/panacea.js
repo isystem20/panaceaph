@@ -775,4 +775,19 @@ $('#employeeform').submit(function(e) {
       });        
 });
 
+
+//REMOVE EDUC/WORK/LICENSE ENTRY
+$('.table').delegate(".modules-item-btn", "click", function() {
+  if ( $('#col-main').hasClass('col-sm-12') ) {
+      $('#col-main').removeClass('col-sm-12').addClass('col-sm-8'); 
+      $('#mod_lbl').text($(this).data('name') + ' Modules');
+      $('#col-ext').show();
+  }else {
+      $('#col-main').removeClass('col-sm-8').addClass('col-sm-12'); 
+      $('#col-ext').hide();
+  }
+ 
+
+});
+
 });

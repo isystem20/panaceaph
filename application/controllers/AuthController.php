@@ -54,6 +54,13 @@ class AuthController extends CI_Controller {
 				{
 					$this->load->model('admin/ModuleAccessModel','moduleaccess');
 					$module_access = $this->moduleaccess->LoadUserModuleAccess($user->id,$user->CompanyId);
+
+
+					// if (in_array([''], $os)) {
+					//     echo "Got Irix";
+					// }
+
+
 					if ($user->Active == '0') {
 						$response = array('error'=>'Account disabled.');
 						// Start Log
@@ -115,6 +122,7 @@ class AuthController extends CI_Controller {
 						'photo'=>$user->UserPhoto,
 						'activecode'=>$user->ActivationCode,
 						'access'=>$module_access,
+						// 'showmenu' => $menu,
 						);
 
 

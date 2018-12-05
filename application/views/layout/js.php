@@ -89,21 +89,6 @@ if (!empty($form)) { ?>
 
 <?php 
 if (!empty($advancedform)) { ?>
-    <!-- <script src="<?php echo base_url(); ?>themes/js/jquery.js"></script>
-    <script src="<?php echo base_url(); ?>themes/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url(); ?>themes/js/jquery.scrollTo.min.js"></script>
-    <script src="<?php echo base_url(); ?>themes/js/jquery.nicescroll.js" type="text/javascript"></script>
-    <script src="<?php echo base_url(); ?>themes/js/jquery-ui-1.9.2.custom.min.js"></script>
-    <script class="include" type="text/javascript" src="<?php echo base_url(); ?>themes/js/jquery.dcjqaccordion.2.7.js"></script>  -->
-
-
-    <!--right slidebar-->
-    <script src="<?php echo base_url(); ?>themes/js/slidebars.min.js"></script>
-
-    <!--common script for all pages-->
-    <script src="<?php echo base_url(); ?>themes/js/common-scripts.js"></script>
-
-
       <script type="text/javascript" src="<?php echo base_url(); ?>themes/assets/fuelux/js/spinner.min.js"></script>
       <script type="text/javascript" src="<?php echo base_url(); ?>themes/assets/bootstrap-fileupload/bootstrap-fileupload.js"></script>
       <script type="text/javascript" src="<?php echo base_url(); ?>themes/assets/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
@@ -230,6 +215,14 @@ if (!empty($tree)) { ?>
       });
   </script>
 <?php } ?>
+
+<?php 
+if (!empty($nestable)) { ?>
+    <script src="<?php echo base_url(); ?>themes/assets/nestable/jquery.nestable.js"></script>
+    <script src="<?php echo base_url(); ?>themes/js/nestable.js"></script>
+<?php } ?>
+
+
 
 <?php 
 if (!empty($knobs)) { ?>

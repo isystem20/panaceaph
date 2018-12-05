@@ -78,12 +78,8 @@ $route['admin/services/add']['post'] = 'admin/ServicesController/Create';/* Post
 $route['admin/services/edit'] = 'admin/ServicesController/Update';/* Post to edit */ 		
 $route['admin/services/delete'] = 'admin/ServicesController/Delete';/* Post to delete */ 	
 $route['admin/services/read'] = 'admin/ServicesController/Read';/* Read Item  */	
+$route['admin/services/modules/(:any)'] = 'admin/ServicesController/EditModules/$1';/* Read Item  */
 
-$route['admin/modules'] = 'admin/ModulesController/Masterlist';/* Read Item  */
-$route['admin/modules/add']['post'] = 'admin/ModulesController/Create';/* Post to create */ 	
-$route['admin/modules/edit'] = 'admin/ModulesController/Update';/* Post to edit */ 		
-$route['admin/modules/delete'] = 'admin/ModulesController/Delete';/* Post to delete */ 	
-$route['admin/modules/read'] = 'admin/ModulesController/Read';/* Read Item  */	
 
 
 $route['clients/add'] = 'admin/ClientController/ClientCreate';

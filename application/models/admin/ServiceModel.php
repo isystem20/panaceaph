@@ -6,6 +6,7 @@ class ServiceModel extends CI_Model {
  	public function __construct() {
 		parent::__construct();
 		$this->load->model('LoggerModel','logger');
+		$this->load->library('Uuid');
 	}
 
 	public $tbl = 'system_services';
@@ -33,12 +34,14 @@ class ServiceModel extends CI_Model {
 
 
 	public function Create($data) {
+		$id = $this->uuid->v4();
+		$data['Id'] = $id;
 		$this->db->set('CreatedById',"'".$this->session->userdata('userid')."'",FALSE); 
 		$this->db->set('ModifiedById',"'".$this->session->userdata('userid')."'",FALSE); 
 		$this->db->insert($this->tbl,$data);
-		$inserted = $this->db->insert_id();
+		$inserted = $this->db->affected_rows();
 		if ($inserted > 0) {
-			$result = $this->LoadList($inserted);
+			$result = $this->LoadList($id);
 			if ($result->num_rows() > 0) {
 				return $result->result();
 			}

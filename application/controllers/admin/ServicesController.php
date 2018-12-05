@@ -164,6 +164,19 @@ class ServicesController extends pierre_Controller {
 
 
 
-
+    public function EditModules($id) {
+        $layout = array('admin_services' => 'active', 'service'=>'AdminService', 'nestable' => TRUE,);
+        $data['labels'] = array('breadcrumb' => 'Modules', 'header'=>'Service Modules');
+        $this->load->view('layout/meta');
+        $this->load->view('layout/css');
+        $this->load->view('layout/headend');
+        $this->load->view('layout/sectionstart');
+        $this->load->view('layout/header');
+        $this->load->view('layout/sidebar',$layout);
+        $this->load->view('admin/ServiceMasterlistModule',$data);
+        $this->load->view('layout/rightsidebar');   
+        $this->load->view('layout/footer'); 
+        $this->load->view('layout/js',$layout);         
+    }
 
 }
