@@ -33,76 +33,33 @@
                             <div style="margin-bottom: 20px;">
                               <span class="label label-primary">SERVICE</span> 
                             </div>  
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">Full Name</label>
-                                <div class="col-sm-3">
-                                  <input type="text" class="form-control FirstName" name="firstname" placeholder="First Name">
-                                </div>
 
 
-                                <div class="col-sm-3">
-                                  <input type="text" class="form-control MiddleName" name="middlename" placeholder="Middle Name">
-                                </div>
+                              <div class="dd" id="nestable_list_2">
+                                  <ol class="dd-list">
+                                      <li class="dd-item" data-id="13">
+                                          <div class="dd-handle">Item 13</div>
+                                      </li>
+                                      <li class="dd-item" data-id="14">
+                                          <div class="dd-handle">Item 14</div>
+                                      </li>
+                                      <li class="dd-item" data-id="15">
+                                          <div class="dd-handle">Item 15</div>
+                                          <ol class="dd-list">
+                                              <li class="dd-item" data-id="16">
+                                                  <div class="dd-handle">Item 16</div>
+                                              </li>
+                                              <li class="dd-item" data-id="17">
+                                                  <div class="dd-handle">Item 17</div>
+                                              </li>
+                                              <li class="dd-item" data-id="18">
+                                                  <div class="dd-handle">Item 18</div>
+                                              </li>
+                                          </ol>
+                                      </li>
+                                  </ol>
+                              </div>
 
-                                <div class="col-sm-3">
-                                  <input type="text" class="form-control LastName" name="lastname" placeholder="Last Name">
-                                </div>
-
-
-                                <div class="col-sm-1">
-                                  <input type="text" class="form-control" name="suffix" placeholder="Suffix">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">Birth Date</label>
-                                <div class="col-sm-2">
-                                    <input class="form-control form-control-inline input-medium default-date-picker Birthdate" name="birthdate" size="16" type="text" value="">
-                                </div>
-
-                                <label class="col-sm-2 control-label">Civil Status</label>
-                                <div class="col-sm-2">
-                                    <select class="form-control CivilStatus" name="civilstatus">
-                                        <option value="Single">Single</option>
-                                        <option value="Married">Married</option>
-                                        <option value="Separated">Separated</option>
-                                    </select>
-                                </div>
-
-                                <label class="col-sm-2 control-label NationalityId">Nationality</label>
-                                <div class="col-sm-2">
-                                    <select class="js-example-basic-single" name="nationality" get="json/nationalities/options">
-                                    </select>
-                                </div>                                  
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">Address</label>
-                                <div class="col-sm-6">
-                                  <input type="text" name="address" class="form-control Address1" placeholder="House No., Street, Subdivision">
-                                </div>
-                                <div class="col-sm-2">
-                                    <select class="js-example-basic-single CityId" name="city" get="json/cities/options">
-                                    </select>
-                                </div>
-                                <div class="col-sm-2">
-                                    <select class="js-example-basic-single ProvinceId" name="region" get="json/regions/options">
-                                    </select>
-                                </div>                                  
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">Contact Details</label>
-                                <div class="col-sm-3">
-                                  <input type="text" name="email" class="form-control PersonalEmail" placeholder="Email">
-                                </div>
-
-                                <div class="col-sm-3">
-                                  <input type="text" name="mobile" class="form-control" placeholder="Mobile Number">
-                                </div>
-
-                                <div class="col-sm-4">
-                                  <input type="text" name="landline" class="form-control" placeholder="Landline">
-                                </div>
-
-                            </div>
                           </div>
 
                     </div>

@@ -45,6 +45,11 @@
 
     <link rel="stylesheet" href="<?php echo base_url(); ?>themes/assets/dropify/dist/css/dropify.min.css">
 
+
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>themes/assets/nestable/jquery.nestable.css" />
+
+
+
     <link href="<?php echo base_url(); ?>themes/packages/hr_custom.css" rel="stylesheet" />
     <link href="<?php echo base_url(); ?>themes/css/panacea.css" rel="stylesheet" />
     <link href="<?php echo base_url(); ?>themes/css/spinners.css" rel="stylesheet" />
