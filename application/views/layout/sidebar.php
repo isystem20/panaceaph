@@ -7,8 +7,9 @@
                   <div id="package_container">
                     <select id="package_select" class="form-control">
                       <?php
-                      // print_r($this->session->userdata());
+                      print_r($this->session->userdata('access'));
                       $services = $this->session->userdata('access');
+
                       $uniques = [];
                       foreach ($services as $row) {
                         if(!in_array($row->ServiceId, $uniques)){
@@ -16,7 +17,8 @@
                             <option value="<?php echo $row->ServiceCode; ?>"><?php echo $row->ServiceName; ?></option>
                       <?php } } ?>
 
-                    </select>                     
+                    </select> 
+
                   </div>
                
 
